@@ -1,19 +1,17 @@
 doctype html
-html(lang="")
+html(lang="ru-RU")
   head
-    // ...
-    link(rel="stylesheet", href="style.css")
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="stylesheet", href="./style.scss")
+    title Качественная опалубка в аренду от 185 ₽
   body
-    h1 Hellfdfda da ffff f
+    .wrapper
+      include ./components/header/header
 
+      main.main
 
-    mixin cards(a, b)
-        li
-            a(href="")
-                span= a
+      include ./components/footer/footer
 
-    +cards('qweqwe')
-    +cards('qweqwe123123')
-
-
-    script(src="index.ts")
+  script(src="index.ts")
+  

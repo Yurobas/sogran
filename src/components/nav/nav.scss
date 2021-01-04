@@ -1,0 +1,15 @@
+.nav {
+  &__list {
+    display: flex;
+  }
+  &__link {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color $transition;
+    &:hover {
+      color: $red;
+    }
+  }
+}
+

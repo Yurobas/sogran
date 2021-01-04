@@ -1,0 +1,32 @@
+.header {
+  padding: 20px 0;
+  background-color: $white;
+  &--scroll {
+    & .header__container {
+      justify-content: flex-start;
+    }
+    & .header__logo {
+      margin-right: 50px;
+    }
+    & .header__contacts {
+      margin-left: auto;
+    }
+    & .header__button {
+      display: inline-block;
+    }
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__phone {
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  &__button {
+    display: none;
+    margin-left: 35px;
+  }
+}

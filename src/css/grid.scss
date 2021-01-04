@@ -1,0 +1,54 @@
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 375px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1440px,
+  xxl: 1920px
+) !default;
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  sm: 100%,
+  md: 710px,
+  lg: 910px,
+  xl: 1320px,
+  xxl: 1520px
+);
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns:                48;
+$grid-gutter-width:           0;
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacers: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+  (
+    0: if(0 / $grid-columns == 0, 0, percentage(0 / $grid-columns)),
+    1: if(1 / $grid-columns == 0, 0, percentage(1 / $grid-columns)),
+    2: if(2 / $grid-columns == 0, 0, percentage(2 / $grid-columns)),
+    3: if(3 / $grid-columns == 0, 0, percentage(3 / $grid-columns)),
+    4: if(4 / $grid-columns == 0, 0, percentage(4 / $grid-columns)),
+    5: if(5 / $grid-columns == 0, 0, percentage(5 / $grid-columns)),
+    6: if(6 / $grid-columns == 0, 0, percentage(6 / $grid-columns))
+  ),
+  $spacers
+);

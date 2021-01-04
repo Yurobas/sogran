@@ -1,0 +1,132 @@
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+body {
+  position: relative;
+  margin: 0;
+  color: $black;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+address {
+  font-style: normal;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+img {
+  border: 0;
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: $black;
+  text-decoration: none;
+  transition: color $transition;
+  &:hover {
+    color: $red;
+    text-decoration: none;
+  }
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0;
+  border: none;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  background-color: transparent;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  text-align: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.link {
+  display: inline;
+  color: $red;
+  background-size: 0% 1px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(0deg, $red, $red);
+  transition: background-size $transition;
+  &:hover {
+    background-size: 100% 1px;
+  }
+}
+
+.button {
+  display: inline-block;
+  min-width: 258px;
+  padding: 18px 10px;
+  color: $white;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  border: 1px solid $red;
+  background-color: $red;
+  transition: color $transition, background-color $transition;
+  &:hover {
+    color: $white;
+    border-color: $black;
+    background-color: $black;
+  }
+  &--secondary {
+    color: $red;
+    border-color: $red;
+    background-color: transparent;
+    &:hover {
+      color: $white;
+      border-color: $red;
+      background-color: $red;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
