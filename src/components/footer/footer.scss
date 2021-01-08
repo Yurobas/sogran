@@ -1,10 +1,14 @@
 .footer {
+  margin-top: auto;
   padding: 50px 0;
   background-color: $white;
   &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  &__text {
+    margin: 0;
   }
   &__agency {
     &-link {

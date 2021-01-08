@@ -1,0 +1,22 @@
+.tooltip {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-top: 12px;
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition: transform $transition, opacity $transition;
+  will-change: transform;
+  pointer-events: none;
+  &__content {
+    position: relative;
+    width: 217px;
+    padding: 9px 12px;
+    color: $black;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: $white;
+    box-shadow: $shadow;
+  }
+}

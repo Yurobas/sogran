@@ -1,0 +1,65 @@
+.hero {
+  position: relative;
+  padding-bottom: 120px;
+  &__background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: $grayBold;
+    overflow: hidden;
+    &-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    &-image {
+      max-width: unset;
+      position: absolute;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__content {
+    padding: 90px 0;
+    background-color: $white;
+  }
+  &__title {
+    & span {
+      color: $red;
+    }
+  }
+  &__description {
+    max-width: 500px;
+  }
+  &__benefits {
+    display: flex;
+    margin: 32px 0 47px;
+  }
+  &__benefit {
+    font-weight: 500;
+    &:not(:last-of-type) {
+      margin-right: 25px;
+    }
+    &-head {
+      margin-bottom: 5px;
+      font-size: 18px;
+      line-height: 1.16;
+      & span {
+        margin-right: 8px;
+        font-size: 40px;
+        line-height: 1.175;
+      }
+    }
+    &-text {
+      max-width: 128px;
+      font-size: 12px;
+      line-height: 1.66;
+    }
+  }
+}
