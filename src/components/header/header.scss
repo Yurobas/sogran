@@ -1,12 +1,24 @@
 .header {
+  position: absolute;
+  width: 100%;
   padding: 20px 0;
   background-color: $white;
-  &--scroll {
+  transform: translate3d(0, -100%, 0);
+  transition: transform $transition, box-shadow $transition;
+  z-index: 100;
+  &.--scroll {
+    position: fixed;
+    padding: 15px 0;
+    transform: none;
+    box-shadow: $shadowBold;
     & .header__container {
       justify-content: flex-start;
     }
     & .header__logo {
       margin-right: 50px;
+    }
+    & .logo__picture {
+      height: 60px;
     }
     & .header__contacts {
       margin-left: auto;

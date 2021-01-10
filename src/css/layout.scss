@@ -31,6 +31,7 @@ li {
 }
 
 address {
+  margin: 0;
   font-style: normal;
 }
 
@@ -145,6 +146,7 @@ button {
 }
 
 .wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -204,5 +206,12 @@ button {
     bottom: 0;
     width: 100vw;
     background-color: inherit;
+  }
+}
+
+.logo {
+  &__picture {
+    height: 80px;
+    overflow: hidden;
   }
 }
