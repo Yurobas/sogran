@@ -1,0 +1,11 @@
+mixin productTooltip(tooltip)
+  div(class="productTooltip" + tooltip.mode style= tooltip.position)
+    .productTooltip__container
+      .productTooltip__icon
+      .productTooltip__info
+        .productTooltip__picture
+          img(class="productTooltip__image" src= tooltip.image, alt="Детальный снимок")
+        .productTooltip__content
+          .productTooltip__name= tooltip.name
+          each text in tooltip.texts
+            p.productTooltip__text= text
