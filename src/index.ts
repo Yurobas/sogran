@@ -1,7 +1,7 @@
 import preloader from './js/preloader'
-import slider from './js/slider'
+import Slider from './js/slider'
 
-slider()
+new Slider('.slider__container');
 
 preloader()
     .then(() => {

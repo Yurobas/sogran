@@ -158,55 +158,6 @@ button {
   &:first-of-type {
     margin-top: 0;
   }
-  &__header {
-    position: relative;
-    padding-left: 130px;
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 29px;
-      left: 0;
-      width: 100px;
-      height: 2px;
-      background-color: $red;
-    }
-  }
-  &__title {
-    margin-bottom: 30px;
-    font-size: 40px;
-    line-height: 1.5;
-    text-transform: uppercase;
-  }
-  &__description {
-    font-size: 25px;
-    line-height: 1.8;
-  }
-}
-
-.outside {
-  position: relative;
-  &--left {
-    &:after {
-      left: 0;
-      transform: translateX(-100%);
-    }
-  }
-  &--right {
-    &:after {
-      right: 0;
-      transform: translateX(100%);
-    }
-  }
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100vw;
-    background-color: inherit;
-  }
 }
 
 .logo {

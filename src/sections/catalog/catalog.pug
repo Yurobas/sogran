@@ -1,42 +1,42 @@
 section.section.catalog
   .container
     .row
-      .section__header.col-36
-        h2.section__title.title Каталог опалубки
-        p.section__description
-          | Подготовим инженерный расчет и схему расстановки элементов под ваш проект. 
-          | Для строительных организаций и дилеров в компании действует гибкая система 
-          | скидок, основанная на индивидуальном подходе к каждому клиенту.
+      +sectionHeader(
+        ' col-19 ml-3 p-0',
+        'Каталог опалубки',
+        'Подготовим инженерный расчет и схему расстановки элементов под ваш проект. Для строительных организаций и дилеров в компании действует гибкая система скидок, основанная на индивидуальном подходе к каждому клиенту.'
+      )
   .container.catalog__products
     ul.row.catalog__products-list
 
 
 
-      li.col-23.catalog__products-item
+      li.col-13.pl-0.ml-3.catalog__products-item
         .product
           .product__picture
-            +productTooltip({
-              mode: ' --left', 
-              position: 'top: 25%; left: 40%;', 
-              image: './images/productTooltip-01.jpg', 
-              name: 'Ровная геометрия' , 
-              texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
-            ]})
-            +productTooltip({
-              mode: ' --right', 
-              position: 'top: 65%; left: 22%;', 
-              image: './images/productTooltip-01.jpg', 
-              name: 'Ровная геометрия' , 
-              texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
-            ]})
-            +productTooltip({
-              mode: ' --bottom', 
-              position: 'top: 59%; left: 62%;', 
-              image: './images/productTooltip-01.jpg', 
-              name: 'Ровная геометрия' , 
-              texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
-            ]})
-            img(class="product__image" src="./images/products/01.png", alt="Продукт")
+            .product__box
+              +productTooltip({
+                mode: ' --left', 
+                position: 'top: 25%; left: 41%;', 
+                image: './images/productTooltip-01.jpg', 
+                name: 'Ровная геометрия' , 
+                texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
+              ]})
+              +productTooltip({
+                mode: ' --right', 
+                position: 'top: 60%; left: 13%;', 
+                image: './images/productTooltip-01.jpg', 
+                name: 'Ровная геометрия' , 
+                texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
+              ]})
+              +productTooltip({
+                mode: ' --bottom', 
+                position: 'top: 53%; left: 65%;', 
+                image: './images/productTooltip-01.jpg', 
+                name: 'Ровная геометрия' , 
+                texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
+              ]})
+              img(class="product__image" src="./images/products/01.png", alt="Продукт")
           .product__content
             .product__info
               h4.product__name.title.title--block Стеновая опалубка
@@ -56,24 +56,25 @@ section.section.catalog
 
 
 
-      li.col-23.catalog__products-item
+      li.col-13.pr-0.mr-3.catalog__products-item
         .product
           .product__picture
-            +productTooltip({
-              mode: ' --right', 
-              position: 'top: 25%; left: 37%;', 
-              image: './images/productTooltip-01.jpg', 
-              name: 'Ровная геометрия' , 
-              texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
-            ]})
-            +productTooltip({
-              mode: ' --bottom', 
-              position: 'top: 47%; left: 65%;', 
-              image: './images/productTooltip-01.jpg', 
-              name: 'Ровная геометрия' , 
-              texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
-            ]})
-            img(class="product__image" src="./images/products/02.png", alt="Продукт")
+            .product__box
+              +productTooltip({
+                mode: ' --right', 
+                position: 'top: 25%; left: 37%;', 
+                image: './images/productTooltip-01.jpg', 
+                name: 'Ровная геометрия' , 
+                texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
+              ]})
+              +productTooltip({
+                mode: ' --bottom', 
+                position: 'top: 47%; left: 64%;', 
+                image: './images/productTooltip-01.jpg', 
+                name: 'Ровная геометрия' , 
+                texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
+              ]})
+              img(class="product__image" src="./images/products/02.png", alt="Продукт")
           .product__content
             .product__info
               h4.product__name.title.title--block Опалубка перекрытий
@@ -93,24 +94,25 @@ section.section.catalog
 
 
 
-      li.col-23.catalog__products-item
+      li.col-13.pl-0.ml-3.catalog__products-item
         .product
           .product__picture
-            +productTooltip({
-              mode: ' --right', 
-              position: 'top: 36%; left: 51%;', 
-              image: './images/productTooltip-01.jpg', 
-              name: 'Ровная геометрия' , 
-              texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
-            ]})
-            +productTooltip({
-              mode: ' --bottom', 
-              position: 'top: 69%; left: 22%;', 
-              image: './images/productTooltip-01.jpg', 
-              name: 'Ровная геометрия' , 
-              texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
-            ]})
-            img(class="product__image" src="./images/products/03.png", alt="Продукт")
+            .product__box
+              +productTooltip({
+                mode: ' --right', 
+                position: 'top: 36%; left: 51%;', 
+                image: './images/productTooltip-01.jpg', 
+                name: 'Ровная геометрия' , 
+                texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
+              ]})
+              +productTooltip({
+                mode: ' --bottom', 
+                position: 'top: 69%; left: 23%;', 
+                image: './images/productTooltip-01.jpg', 
+                name: 'Ровная геометрия' , 
+                texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
+              ]})
+              img(class="product__image" src="./images/products/03.png", alt="Продукт")
           .product__content
             .product__info
               h4.product__name.title.title--block Опалубка колонн
@@ -130,17 +132,18 @@ section.section.catalog
 
 
 
-      li.col-23.catalog__products-item
+      li.col-13.pr-0.mr-3.catalog__products-item
         .product
           .product__picture
-            +productTooltip({
-              mode: ' --bottom', 
-              position: 'top: 48%; left: 61%;', 
-              image: './images/productTooltip-01.jpg', 
-              name: 'Ровная геометрия' , 
-              texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
-            ]})
-            img(class="product__image" src="./images/products/04.png", alt="Продукт")
+            .product__box
+              +productTooltip({
+                mode: ' --bottom', 
+                position: 'top: 48%; left: 60%;', 
+                image: './images/productTooltip-01.jpg', 
+                name: 'Ровная геометрия' , 
+                texts: [ 'В процессе работы не придется срезать или шлифовать бетон'
+              ]})
+              img(class="product__image" src="./images/products/04.png", alt="Продукт")
           .product__content
             .product__info
               h4.product__name.title.title--block Оборудование

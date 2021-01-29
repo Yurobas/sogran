@@ -53,7 +53,7 @@
     border-radius: 50%;
     border: 2px solid $red;
     background-color: $white;
-    transition: transform $transition;
+    transition: background-color $transition, transform $transition;
     will-change: transform;
     cursor: pointer;
     &:after,
@@ -66,13 +66,18 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      transition: background-color $transition;
       background-color: $red;
     }
     &:after {
       transform: translate(-50%, -50%) rotate(90deg);
     }
     &:hover {
-      transform: rotate(45deg);
+      background-color: $red;
+      &:after,
+      &:before {
+        background-color: $white;
+      }
     }
   }
   &__info {

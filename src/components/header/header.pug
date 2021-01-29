@@ -1,13 +1,14 @@
-header.header
+header.header.--scroll
   .container
-    .header__container
-      .header__logo
-        .logo
-          .logo__picture
-            img(class="logo__image" src="./images/logo.svg")
-      .header__nav
-        include ../nav/nav
-      address.header__contacts
-        a(class="header__phone" href="tel:+74957952895") +7 (495) 795-28-95
-        a(class="header__button button button--secondary" href="#") Оставить заявку
+    .row
+      .header__container.col-26.ml-3.mr-3.p-0
+        .header__logo
+          .logo
+            .logo__picture
+              img(class="logo__image" src="./images/logo.svg")
+        .header__nav
+          include ../nav/nav
+        address.header__contacts
+          a(class="header__phone" href="tel:+74957952895") +7 (495) 795-28-95
+          a(class="header__button button button--secondary" href="#") Оставить заявку
 

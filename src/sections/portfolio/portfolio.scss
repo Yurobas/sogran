@@ -1,0 +1,10 @@
+.portfolio {
+  & .sectionHeader {
+    padding-top: 90px;
+    padding-bottom: 30px;
+    background-color: $white;
+  }
+  & .sectionHeader__title {
+    max-width: 680px;
+  }
+}

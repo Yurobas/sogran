@@ -1,13 +1,13 @@
 .header {
-  position: absolute;
+  position: sticky;
+  top: 0;
   width: 100%;
   padding: 20px 0;
   background-color: $white;
   transform: translate3d(0, -100%, 0);
-  transition: transform $transition, box-shadow $transition;
+  transition: padding $transition, transform $transition, box-shadow $transition;
   z-index: 100;
   &.--scroll {
-    position: fixed;
     padding: 15px 0;
     transform: none;
     box-shadow: $shadowBold;

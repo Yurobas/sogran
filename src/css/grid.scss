@@ -19,17 +19,16 @@ $grid-breakpoints: (
 
 $container-max-widths: (
   sm: 100%,
-  md: 710px,
-  lg: 910px,
-  xl: 1320px,
-  xxl: 1520px
+  md: 100%,
+  lg: 100%,
+  xl: 100%
 );
 
 // Grid columns
 //
 // Set the number of columns and specify the width of the gutters.
 
-$grid-columns:                48;
+$grid-columns:                32;
 $grid-gutter-width:           30px;
 
 // Spacing
@@ -48,7 +47,25 @@ $spacers: map-merge(
     3: if(3 / $grid-columns == 0, 0, percentage(3 / $grid-columns)),
     4: if(4 / $grid-columns == 0, 0, percentage(4 / $grid-columns)),
     5: if(5 / $grid-columns == 0, 0, percentage(5 / $grid-columns)),
-    6: if(6 / $grid-columns == 0, 0, percentage(6 / $grid-columns))
+    6: if(6 / $grid-columns == 0, 0, percentage(6 / $grid-columns)),
+    7: if(7 / $grid-columns == 0, 0, percentage(7 / $grid-columns)),
+    8: if(8 / $grid-columns == 0, 0, percentage(8 / $grid-columns)),
+    9: if(9 / $grid-columns == 0, 0, percentage(9 / $grid-columns)),
+    10: if(10 / $grid-columns == 0, 0, percentage(10 / $grid-columns)),
+    11: if(11 / $grid-columns == 0, 0, percentage(11 / $grid-columns)),
+    12: if(12 / $grid-columns == 0, 0, percentage(12 / $grid-columns)),
+    13: if(13 / $grid-columns == 0, 0, percentage(13 / $grid-columns)),
+    14: if(14 / $grid-columns == 0, 0, percentage(14 / $grid-columns)),
+    15: if(15 / $grid-columns == 0, 0, percentage(15 / $grid-columns)),
+    16: if(16 / $grid-columns == 0, 0, percentage(16 / $grid-columns)),
+    17: if(17 / $grid-columns == 0, 0, percentage(17 / $grid-columns)),
+    18: if(18 / $grid-columns == 0, 0, percentage(18 / $grid-columns)),
+    19: if(19 / $grid-columns == 0, 0, percentage(19 / $grid-columns)),
+    20: if(20 / $grid-columns == 0, 0, percentage(20 / $grid-columns)),
+    21: if(21 / $grid-columns == 0, 0, percentage(21 / $grid-columns)),
+    22: if(22 / $grid-columns == 0, 0, percentage(22 / $grid-columns)),
+    23: if(23 / $grid-columns == 0, 0, percentage(23 / $grid-columns)),
+    24: if(24 / $grid-columns == 0, 0, percentage(24 / $grid-columns)),
   ),
   $spacers
 );
