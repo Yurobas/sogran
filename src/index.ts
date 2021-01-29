@@ -1,6 +1,10 @@
-import preloader from './js/preloader.ts'
+import preloader from './js/preloader'
+import slider from './js/slider'
 
+slider()
 
-preloader('rggsdfgsdg')
-    .then(
-        console.log)
+preloader()
+    .then(() => {
+      console.log('done');
+      
+    })

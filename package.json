@@ -19,5 +19,8 @@
   },
   "browserslist": [
     "last 1 chrome version"
-  ]
+  ],
+  "dependencies": {
+    "swiper": "^6.4.10"
+  }
 }
