@@ -87,6 +87,10 @@ button {
   cursor: pointer;
 }
 
+.container {
+  max-width: 1920px;
+}
+
 .title {
   margin-bottom: 15px;
   font-size: 50px;
@@ -104,15 +108,18 @@ button {
 }
 
 .link {
-  display: inline;
   color: $red;
-  background-size: 0% 1px;
-  background-position: left bottom;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(0deg, $red, $red);
-  transition: background-size $transition;
-  &:hover {
-    background-size: 100% 1px;
+  transition: color $transition;
+  &.--animation {
+    display: inline;
+    background-size: 0% 1px;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(0deg, $red, $red);
+    transition: color $transition, background-size $transition;
+    &:hover {
+      background-size: 100% 1px;
+    }
   }
 }
 
@@ -133,7 +140,7 @@ button {
     border-color: $black;
     background-color: $black;
   }
-  &--secondary {
+  &.--secondary {
     color: $red;
     border-color: $red;
     background-color: transparent;
@@ -160,9 +167,42 @@ button {
   }
 }
 
+.outside {
+  position: relative;
+  &:after {
+    content: '';
+    display: block;
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-color: $white;
+  }
+  &.--right {
+    &:after {
+      left: unset;
+      right: 0;
+      transform: translateX(100%);
+    }
+  }
+}
+
 .logo {
   &__picture {
     height: 80px;
     overflow: hidden;
   }
+}
+
+.map {
+  width: 100%;
+  height: 665px;
+  background-color: $white;
+}
+
+.red {
+  color: $red;
 }

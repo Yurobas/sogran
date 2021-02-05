@@ -1,0 +1,55 @@
+section.section.consult
+  .container
+    .row
+      .sectionHeader.--bg.outside.col-29.pl-3.pr-6.mr-3
+        .sectionHeader__row
+          .sectionHeader__icon
+          .sectionHeader__content
+            h2.sectionHeader__title.--short.title Рассчитаем ваш проект и&nbsp;ответим на вопросы
+            p.sectionHeader__description 
+              | Наши консультанты свяжутся с вами, чтобы подобрать для вас лучшее решение. 
+              | После&nbsp;согласования решения и подписания договора, мы доставим оборудование 
+              | и&nbsp;материалы на объект. Весь процесс от момента обращения займет не более 2-х дней.
+  .container
+    .row
+      .consult__content.outside.col-29.pr-5.pl-5
+        form.consult__form.form(action="#0")
+          .form__row
+            .form__block
+              label.form__label.--value.--error
+                input(class="form__input" type="text" value="Иван")
+                .form__placeholder 
+                  span.form__placeholder-text Имя
+                .form__error Ошибка
+            .form__block
+              label.form__label.--value
+                input(class="form__input" type="text" value="8 800 000 00 00")
+                .form__placeholder 
+                  span.form__placeholder-text Телефон
+                .form__error Ошибка
+            .form__block
+              label.form__label
+                input(class="form__input" type="text")
+                .form__placeholder 
+                  span.form__placeholder-text Email
+                .form__error Ошибка
+          .form__row
+            .form__block
+              label.form__label.--file
+                input(class="form__input" type="file")
+                .form__placeholder 
+                  span.form__placeholder-text Прикрепить файл
+                  span(class="form__placeholder-clear" title="Удалить файл")
+                img(class="form__icon" src="/images/icons/file.svg")
+                .form__error Ошибка
+            .form__block.--wide
+              label.form__label
+                input(class="form__input" type="text")
+                .form__placeholder 
+                  span.form__placeholder-text Ваш вопрос
+                .form__error Ошибка
+          .form__footer
+            button(class="button" type="submit") Оставить заявку
+
+
+

@@ -1,0 +1,107 @@
+.form {
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -30px 0 0;
+    & + & {
+      margin-top: 90px;
+    }
+  }
+  &__block {
+    width: calc(1 / 3 * 100% - 30px);
+    margin: 0 30px 0 0;
+    &.--wide {
+      width: calc(2 / 3 * 100% - 30px);
+    }
+  }
+  &__label {
+    position: relative;
+    display: block;
+    width: 100%;
+    &.--error {
+      & .form__input {
+        border-color: $red;
+      }
+      & .form__error {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    &.--value {
+      & .form__placeholder {
+        color: $grayBold;
+        transform: translate3d(-7%, -6px, 0) scale3d(.8, .8, .8);
+      }
+    }
+    &.--file {
+      & .form__input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        visibility: hidden;
+      }
+      & .form__placeholder {
+        position: static;
+        width: 100%;
+        padding: 14px 58px 14px 0;
+        line-height: unset;
+        border-bottom: 1px solid $black;
+        transform: none;
+        &-text {
+          text-overflow: ellipsis;
+        }
+        &-clear {
+          display: inline-block;
+          vertical-align: middle;
+          width: 23px;
+          height: 23px;
+          margin-left: 2px;
+          background: url('/images/icons/close.svg') 50% 50%/contain no-repeat;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  &__input {
+    width: 100%;
+    padding: 14px 0;
+    border-bottom: 1px solid $black;
+    transition: border-color $transition;
+    &:focus {
+      & ~ .form__placeholder {
+        color: $grayBold;
+        transform: translate3d(-7%, -6px, 0) scale3d(.8, .8, .8);
+      }
+    }
+  }
+  &__placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+    line-height: 1;
+    transform: translate3d(0, 110%, 0);
+    transition: color $transition, transform $transition;
+    will-change: transform;
+    cursor: text;
+  }
+  &__error {
+    margin-top: 10px;
+    opacity: 0;
+    color: $red;
+    font-size: 12px;
+    line-height: 1.25;
+    transform: translate3d(0, 10px, 0);
+    transition: opacity $transition, transform $transition;
+  }
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-100%);
+  }
+  &__footer {
+    margin-top: 60px;
+  }
+}

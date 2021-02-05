@@ -1,6 +1,5 @@
 .header {
   position: sticky;
-  top: 0;
   width: 100%;
   padding: 20px 0;
   background-color: $white;
@@ -8,6 +7,7 @@
   transition: padding $transition, transform $transition, box-shadow $transition;
   z-index: 100;
   &.--scroll {
+    top: 0;
     padding: 15px 0;
     transform: none;
     box-shadow: $shadowBold;

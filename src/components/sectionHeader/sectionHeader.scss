@@ -1,11 +1,16 @@
 .sectionHeader {
+  &.--bg {
+    padding-top: 90px;
+    padding-bottom: 30px;
+    background-color: $white;
+  }
   &__row {
     display: flex;
   }
   &__icon {
-    min-width: 100px;
+    min-width: $headerIconWidth;
     height: 2px;
-    margin: 30px 30px 0 0;
+    margin: $headerIconOffset $headerIconOffset 0 0;
     background-color: $red;
   }
   &__title {
@@ -13,6 +18,9 @@
     font-size: 40px;
     line-height: 1.5;
     text-transform: uppercase;
+    &.--short {
+      max-width: 745px;
+    }
   }
   &__description {
     font-size: 25px;

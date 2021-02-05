@@ -1,0 +1,35 @@
+.services {
+  &__list {
+    counter-reset: services;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  &__item {
+    display: flex;
+    margin-top: 50px;
+  }
+  &__count {
+    height: 80px;
+    margin-right: 45px;
+    border-right: 1px solid $red;
+    &:after {
+      counter-increment: services;
+      content: '0' counter(services);
+      display: block;
+      padding-right: 20px;
+      font-size: 25px;
+      line-height: 1;
+    }
+  }
+  &__name {
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  &__text {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+}
