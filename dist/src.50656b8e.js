@@ -5,4 +5,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{}],"QCba":[function(require,module,exports) {
 "use strict";var e=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(exports,"__esModule",{value:!0});var r=e(require("./js/preloader")),t=e(require("./js/slider"));new t.default(".slider__container"),r.default().then(function(){console.log("done")});
 },{"./js/preloader":"vccU","./js/slider":"IKvX"}]},{},["QCba"], null)
-//# sourceMappingURL=/src.50656b8e.js.map
+//# sourceMappingURL=dist/src.50656b8e.js.map
