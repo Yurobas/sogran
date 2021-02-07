@@ -1,14 +1,18 @@
 header.header.--scroll
   .container
     .row
-      .header__container.col-26.ml-3.mr-3.p-0
+      .header__container.col-xxl-26.col-xl-30.ml-xxl-3.mr-xxl-3.mr-lg-2.ml-lg-2.mr-md-1.ml-md-1.p-0
         .header__logo
           .logo
             .logo__picture
               img(class="logo__image" src="./images/logo.svg")
         .header__nav
-          include ../nav/nav
+          .header__nav-container
+            include ../nav/nav
+            .header__nav-close
+              include ../close/close
         address.header__contacts
           a(class="header__phone" href="tel:+74957952895") +7 (495) 795-28-95
-          a(class="header__button button button--secondary" href="#") Оставить заявку
+          a(class="header__button button --secondary" href="#") Оставить заявку
+        .header__burger
 

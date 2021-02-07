@@ -1,0 +1,44 @@
+.additional {
+  &__list {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 30px -30px 0 0;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    width: calc(25% - 22.5px);
+    margin-top: 30px;
+    padding: 30px;
+    background-color: $white;
+    overflow: hidden;
+    @media (max-width: 1439px) {
+      width: calc(50% - 15px);
+    }
+  }
+  &__icon {
+    align-self: flex-start;
+    margin-bottom: 20px;
+  }
+  &__name {
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  &__text {
+    font-size: 16px;
+    line-height: 1.75;
+    & + & {
+      margin-top: 15px;
+    }
+    &:last-of-type {
+      margin-bottom: 20px;
+    }
+  }
+  &__button {
+    margin-top: auto;
+  }
+}

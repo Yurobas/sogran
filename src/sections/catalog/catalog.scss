@@ -1,6 +1,12 @@
 .catalog {
   &__products {
     margin-top: 90px;
+    @media (max-width: 1919px) {
+      margin-top: 60px;
+    }
+    &-list {
+      margin-top: -30px;
+    }
     &-item {
       margin-top: 30px;
       & .product {

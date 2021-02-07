@@ -1,6 +1,5 @@
 .header {
   position: sticky;
-  top: 0;
   width: 100%;
   padding: 20px 0;
   background-color: $white;
@@ -8,6 +7,7 @@
   transition: padding $transition, transform $transition, box-shadow $transition;
   z-index: 100;
   &.--scroll {
+    top: 0;
     padding: 15px 0;
     transform: none;
     box-shadow: $shadowBold;
@@ -25,12 +25,43 @@
     }
     & .header__button {
       display: inline-block;
+      @media (max-width: 1439px) {
+        display: none;
+      }
     }
   }
   &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  &__nav {
+    @media (max-width: 1439px) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $white;
+      transform: translate3d(-100%, 0, 0);
+      pointer-events: none;
+      opacity: 0;
+      &.--open {
+        opacity: 1;
+        transform: none;
+        pointer-events: unset;
+        transition: opacity $transition, transform $transition;
+      }
+    }
+    &-container {
+      position: relative;
+    }
+    &-close {
+      display: none;
+      @media (max-width: 1439px) {
+        display: block;
+      }
+    }
   }
   &__phone {
     font-size: 18px;
@@ -40,5 +71,33 @@
   &__button {
     display: none;
     margin-left: 35px;
+  }
+  &__burger {
+    display: none;
+    margin-left: 25px;
+    &:after,
+    &:before {
+      content: '';
+      width: 30px;
+      height: 2px;
+      background-color: $red;
+      transition: transform $transition;
+    }
+    &:after {
+      margin-top: 10px;
+    }
+    &.--active {
+      &:after {
+        transform: translate3d(0, -6px, 0) rotate(45deg);
+      }
+      &:before {
+        transform: translate3d(0, 6px, 0) rotate(-45deg);
+      }
+    }
+    @media (max-width: 1439px) {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
   }
 }

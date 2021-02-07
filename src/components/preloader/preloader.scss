@@ -1,0 +1,41 @@
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $white;
+  transition: opacity $transitionLong $delayLong;
+  opacity: 1;
+  z-index: 1000;
+  &__content {
+    position: relative;
+    height: 100%;
+  }
+  &__value {
+    position: absolute;
+    top: 60%;
+    left: 20%;
+    color: $red;
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    transition: transform $transition, opacity $transition;
+    opacity: 1;
+    @media (max-width: 1439px) {
+      font-size: 40px;
+    }
+    @media (max-width: 1023px) {
+      font-size: 34px;
+    }
+  }
+  &.--off {
+    opacity: 0;
+    pointer-events: none;
+    & .preloader__value {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+    }
+  }
+}

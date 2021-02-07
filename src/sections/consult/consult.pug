@@ -1,0 +1,55 @@
+section.section.consult
+  .container
+    .row
+      .sectionHeader.--bg.outside.col-xxl-29.col-xl-31.col-lg-30.pl-xxl-3.pl-xl-1.pl-lg-2.pr-xl-6.pr-lg-7
+        .sectionHeader__row
+          .sectionHeader__icon
+          .sectionHeader__content
+            h2.sectionHeader__title.--short.title Рассчитаем ваш проект и&nbsp;ответим на вопросы
+            p.sectionHeader__description 
+              | Наши консультанты свяжутся с вами, чтобы подобрать для вас лучшее решение. 
+              | После&nbsp;согласования решения и подписания договора, мы доставим оборудование 
+              | и&nbsp;материалы на объект. Весь процесс от момента обращения займет не более 2-х дней.
+  .container
+    .row
+      .consult__content.outside.col-xxl-29.col-xl-31.col-lg-30.pr-xxl-5.pl-xxl-5.pl-xl-3.pl-lg-4.pr-lg-4
+        form.consult__form.form(action="#0")
+          .form__row
+            .form__block
+              label.form__label.--value.--error
+                input(class="form__input text" type="text" value="Иван")
+                .form__placeholder 
+                  span.form__placeholder-text.text Имя
+                .form__error Ошибка
+            .form__block
+              label.form__label.--value
+                input(class="form__input text" type="text" value="8 800 000 00 00")
+                .form__placeholder 
+                  span.form__placeholder-text.text Телефон
+                .form__error Ошибка
+            .form__block
+              label.form__label
+                input(class="form__input text" type="text")
+                .form__placeholder 
+                  span.form__placeholder-text.text Email
+                .form__error Ошибка
+          .form__row
+            .form__block
+              label.form__label.--file
+                input(class="form__input text" type="file")
+                .form__placeholder 
+                  span.form__placeholder-text.text Прикрепить файл
+                  span(class="form__placeholder-clear" title="Удалить файл")
+                img(class="form__icon" src="/images/icons/file.svg")
+                .form__error.--info Допустимые форматы jpg, pdf, xls. Файл не должен превышать 20MB.
+            .form__block.--wide
+              label.form__label
+                input(class="form__input text" type="text")
+                .form__placeholder 
+                  span.form__placeholder-text.text Ваш вопрос
+                .form__error Ошибка
+          .form__footer
+            button(class="button" type="submit") Оставить заявку
+
+
+

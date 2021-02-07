@@ -4,6 +4,12 @@
     justify-content: center;
     position: relative;
     height: 500px;
+    @media (max-width: 1439px) {
+      height: 360px;
+    }
+    @media (max-width: 1023px) {
+      height: 260px;
+    }
     &:after {
       content: '';
       display: block;
@@ -14,17 +20,33 @@
       bottom: 0;
       background-color: $white;
       z-index: 1;
+      @media (max-width: 1439px) {
+        height: 180px;
+      }
+      @media (max-width: 1023px) {
+        height: 130px;
+      }
     }
   }
   &__box {
     position: relative;
+    text-align: center;
     z-index: 2;
+  }
+  &__image {
+    max-height: 100%;
   }
   &__content {
     display: flex;
     flex-direction: column;
     height: calc(100% - 500px);
     background-color: $white;
+    @media (max-width: 1439px) {
+      height: calc(100% - 360px);
+    }
+    @media (max-width: 1023px) {
+      height: calc(100% - 260px);
+    }
   }
   &__info {
     padding: 15px 50px 30px;
@@ -71,6 +93,7 @@
   &__button {
     & .button {
       width: 100%;
+      min-width: unset;
     }
   }
 }
