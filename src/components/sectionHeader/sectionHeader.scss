@@ -12,18 +12,49 @@
     height: 2px;
     margin: $headerIconOffset $headerIconOffset 0 0;
     background-color: $red;
+    @media (max-width: 1919px) {
+      $headerIconWidth: 80px !global;
+      min-width: $headerIconWidth;
+    }
+    @media (max-width: 1439px) {
+      $headerIconWidth: 50px !global;
+      min-width: $headerIconWidth;
+      margin: 21px $headerIconOffset 0 0;
+    }
+    @media (max-width: 1023px) {
+      $headerIconWidth: 45px !global;
+      min-width: $headerIconWidth;
+    }
   }
   &__title {
-    margin-bottom: 30px;
     font-size: 40px;
     line-height: 1.5;
     text-transform: uppercase;
+    letter-spacing: 0.1em;
+    @media (max-width: 1439px) {
+      font-size: 30px;
+    }
+    @media (max-width: 1023px) {
+      font-size: 25px;
+    }
     &.--short {
       max-width: 745px;
+      @media (max-width: 1439px) {
+        max-width: 580px;
+      }
+    }
+    & + .sectionHeader__description {
+      margin-top: 30px;
     }
   }
   &__description {
     font-size: 25px;
     line-height: 1.8;
+    @media (max-width: 1439px) {
+      font-size: 22px;
+    }
+    @media (max-width: 1023px) {
+      font-size: 18px;
+    }
   }
 }

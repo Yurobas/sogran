@@ -1,4 +1,10 @@
 .clients {
+  &__list {
+    margin-top: 90px;
+    @media (max-width: 1439px) {
+      margin-top: 60px;
+    }
+  }
   &__item {
     display: flex;
     align-items: center;

@@ -2,10 +2,16 @@
   &__info {
     position: relative;
     z-index: 2;
+    @media (max-width: 1023px) {
+      background-color: $white;
+    }
   }
   &__video {
     height: 580px;
     background-color: $black;
+    @media (max-width: 1439px) {
+      height: 400px;
+    }
     &-link {
       display: flex;
       align-items: center;
@@ -48,5 +54,9 @@
     margin-bottom: $marginSection;
     padding-bottom: 20px;
     background-color: $white;
+    @media (max-width: 1439px) {
+      padding: 30px 0;
+      font-size: 14px;
+    }
   }
 }

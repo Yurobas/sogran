@@ -92,19 +92,31 @@ button {
 }
 
 .title {
-  margin-bottom: 15px;
   font-size: 50px;
   font-weight: 500;
   line-height: 1.2;
+  letter-spacing: -0.01em;
+  @media (max-width: 1439px) {
+    font-size: 40px;
+  }
+  @media (max-width: 1023px) {
+    font-size: 34px;
+  }
   &--block {
     font-size: 25px;
     line-height: 1.4;
+  }
+  & + * {
+    margin-top: 15px;
   }
 }
 
 .text {
   font-size: 16px;
   line-height: 1.625;
+  @media (max-width: 1439px) {
+    font-size: 15px;
+  }
 }
 
 .link {
@@ -156,14 +168,22 @@ button {
   position: relative;
   display: flex;
   flex-direction: column;
+  max-width: 100%;
   min-height: 100vh;
-  background-color: $gray;
+  background-color: $grayLight;
+  overflow: hidden;
 }
 
 .section {
   margin: 120px 0;
   &:first-of-type {
     margin-top: 0;
+  }
+  @media (max-width: 1439px) {
+    margin: 90px 0;
+  }
+  @media (max-width: 1023px) {
+    margin: 80px 0;
   }
 }
 
@@ -201,6 +221,9 @@ button {
   width: 100%;
   height: 665px;
   background-color: $white;
+  @media (max-width: 1439px) {
+    height: 580px;
+  }
 }
 
 .red {

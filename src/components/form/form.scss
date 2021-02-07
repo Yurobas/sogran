@@ -79,12 +79,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 16px;
     line-height: 1;
-    transform: translate3d(0, 110%, 0);
+    transform: translate3d(0, 50%, 0);
     transition: color $transition, transform $transition;
     will-change: transform;
     cursor: text;
+    @media (max-width: 1439px) {
+      transform: translate3d(0, 60%, 0);
+    }
   }
   &__error {
     margin-top: 10px;
@@ -94,12 +96,16 @@
     line-height: 1.25;
     transform: translate3d(0, 10px, 0);
     transition: opacity $transition, transform $transition;
+    &.--info {
+      opacity: 1;
+      color: $grayBold;
+      transform: none;
+    }
   }
   &__icon {
     position: absolute;
-    top: 50%;
+    top: 15px;
     right: 0;
-    transform: translateY(-100%);
   }
   &__footer {
     margin-top: 60px;

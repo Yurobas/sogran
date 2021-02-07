@@ -1,5 +1,10 @@
 .hero {
   &__background {
+    @media (max-width: 1023px) {
+      height: 380px;
+      padding-bottom: 40px;
+      background-color: $white;
+    }
     &-box {
       display: flex;
       align-items: center;
@@ -20,8 +25,23 @@
     margin: 0 0 $marginSection;
     padding: 90px 0;
     background-color: $white;
+    @media (max-width: 1919px) {
+      padding: 90px 0 110px;
+    }
+    @media (max-width: 1439px) {
+      $marginSection: 90px !global;
+      margin: 0 0 $marginSection;
+      padding: 40px 0 70px;
+    }
+    @media (max-width: 1023px) {
+      margin: 0;
+      padding: 0 0 60px;
+    }
   }
   &__title {
+    @media (max-width: 1023px) {
+      max-width: 400px;
+    }
     & span {
       color: $red;
     }
