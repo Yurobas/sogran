@@ -26,8 +26,6 @@ export default async function () :Promise<void> {
   })
   loaded.then(() => isLoaded = true)
 
-  
-  let progress
   const status = anim(delay, progress => {
     if (isLoaded) return false
 
@@ -38,9 +36,9 @@ export default async function () :Promise<void> {
 
   await Promise.race([status, loaded])
 
-  setData(100)
+  await setData(100)
 
-
+  document.querySelector('.preloader').classList.add('--off')
 }
 
 let lastProgress = 0
@@ -64,7 +62,8 @@ async function setData(progress){
 }
 
 function render(progress){
-  console.log(progress)
+  progress |= progress
+  document.querySelector('.preloader__value').innerHTML = progress.toString().padStart(3, '0')
 }
 
 function wait(time, cb?){

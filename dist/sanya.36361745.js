@@ -414,14 +414,18 @@ var _preloader = _interopRequireDefault(require("./js/preloader"));
 
 var _slider = _interopRequireDefault(require("./js/slider"));
 
+var _animateBlocks = _interopRequireDefault(require("./js/animateBlocks"));
+
 var _pop = require("./js/pop");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 new _slider.default('.slider__container');
 (0, _pop.productTooltipInit)();
-(0, _preloader.default)().then(() => {});
-},{"./js/preloader":"bd37514b50be011a101e245a9c70f959","./js/slider":"77d040d54dee718def920990509635da","./js/pop":"87197f6416ae38f80df3574a30b3d172"}],"bd37514b50be011a101e245a9c70f959":[function(require,module,exports) {
+(0, _preloader.default)().then(() => {
+  (0, _animateBlocks.default)();
+});
+},{"./js/preloader":"bd37514b50be011a101e245a9c70f959","./js/slider":"77d040d54dee718def920990509635da","./js/pop":"87197f6416ae38f80df3574a30b3d172","./js/animateBlocks":"f6626a1b73bd4d8e99225c08a5d2eb67"}],"bd37514b50be011a101e245a9c70f959":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -448,14 +452,14 @@ async function _default() {
     window.addEventListener('load', res);
   });
   loaded.then(() => isLoaded = true);
-  let progress;
   const status = anim(delay, progress => {
     if (isLoaded) return false;
     setData(97 * progress);
     return true;
   });
   await Promise.race([status, loaded]);
-  setData(100);
+  await setData(100);
+  document.querySelector('.preloader').classList.add('--off');
 }
 
 let lastProgress = 0;
@@ -480,7 +484,8 @@ async function setData(progress) {
 }
 
 function render(progress) {
-  console.log(progress);
+  progress |= progress;
+  document.querySelector('.preloader__value').innerHTML = progress.toString().padStart(3, '0');
 }
 
 function wait(time, cb) {
@@ -650,16 +655,190 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.productTooltipInit = productTooltipInit;
 
+var _globalListeners = require("./globalListeners");
+
 function productTooltipInit() {
   const items = document.querySelectorAll('.productTooltip');
+  const classes = ['--left', '--right'];
   items.forEach(item => {
+    // @ts-ignore
+    (0, _globalListeners.clickOutside)(item, () => {
+      item.classList.remove('--active');
+    });
     item.querySelector('.productTooltip__icon').addEventListener('click', event => {
       const node = event.currentTarget;
-      item.classList.toggle('--active');
-      node.getBoundingClientRect();
+      const block = item.querySelector('.productTooltip__info');
+
+      if (!item.classList.contains('--active')) {
+        Object.assign(block.style, {
+          opacity: 0,
+          transition: 'none'
+        });
+        item.classList.add('--active');
+        const {
+          right,
+          left,
+          width
+        } = block.getBoundingClientRect();
+        const {
+          documentElement: {
+            clientWidth
+          }
+        } = document;
+
+        if (clientWidth - right < 30) {
+          item.classList.remove('--right');
+          item.classList.add('--left');
+        } else if (left < 30) {
+          item.classList.add('--right');
+          item.classList.remove('--left');
+        }
+
+        item.classList.remove('--active');
+      }
+
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        Object.assign(block.style, {
+          opacity: '',
+          transition: ''
+        });
+        item.classList.toggle('--active');
+      }));
     });
   });
 }
+},{"./globalListeners":"5a52a410d912921ed9195b66ee527565"}],"5a52a410d912921ed9195b66ee527565":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.clickOutside = clickOutside;
+exports.keyupEsc = keyupEsc;
+const listeners = [];
+globalThis?.addEventListener('click', event => {
+  function isClickInside(event, el) {
+    if (el instanceof Function) {
+      el = el();
+    }
+
+    if (!el) {
+      return;
+    }
+
+    if (event.path) {
+      return event.path.includes(el);
+    }
+
+    if (document.body.contains(event.target)) {
+      return el.contains(event.target);
+    }
+
+    return true;
+  }
+
+  listeners.forEach(([item, ignoreEls, cb]) => {
+    // 2 проверки, 1 надежная, 2 резервный план
+    // если 1 метод не работает то он возвращает тру чтоб пошло ко 2
+    if (isClickInside(event, item)) {
+      return;
+    }
+
+    const isAllInside = ignoreEls?.some(el => isClickInside(event, el)) ?? true;
+
+    if (isAllInside) {
+      return;
+    }
+
+    cb(event, item);
+  });
+});
+/**
+ * 
+ * @param {HTMLElement} target Элемент
+ * @param {Array<HTMLElement|Function>} ignoreEls Массив элементов снаружи таргета, клик по которым тоже возможен, можно передать функцию которая вернет элемент
+ * @param {Function} [callback] Коллбек после клика снаружи
+ * @returns {Function} Функция удаления обработчика
+ */
+
+function clickOutside(target, ignoreEls, callback) {
+  if (ignoreEls instanceof Function) {
+    callback = ignoreEls;
+    ignoreEls = [];
+  }
+
+  const arr = [target, ignoreEls, callback];
+  listeners.push(arr);
+  return () => {
+    const index = listeners.indexOf(arr);
+
+    if (!~index) {
+      // если не нашло
+      return;
+    }
+
+    listeners.splice(listeners.indexOf(arr), 1);
+  };
+}
+
+const keyListeners = [];
+globalThis?.addEventListener('keyup', event => {
+  keyListeners.forEach(([cb]) => {
+    cb(event);
+  });
+});
+
+function keyupEsc(callback) {
+  const arr = [event => {
+    const {
+      which,
+      code,
+      key,
+      keyCode
+    } = event;
+
+    if (which === 27 || keyCode === 27 || code === 'Escape' || key === 'Escape') {
+      return callback(event);
+    }
+  }];
+  keyListeners.push(arr);
+  return () => {
+    const index = keyListeners.indexOf(arr);
+
+    if (!~index) {
+      // если не нашло
+      return;
+    }
+
+    keyListeners.splice(keyListeners.indexOf(arr), 1);
+  };
+}
+},{}],"f6626a1b73bd4d8e99225c08a5d2eb67":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _default = () => {
+  [...document.querySelectorAll('.animate')].forEach(item => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('--animated');
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px',
+      threshold: .5
+    });
+    observer.observe(item);
+  });
+};
+
+exports.default = _default;
 },{}]},{},["671c5a694df60ad825952deb7e9f1dc4","7843b3960e086726267ff606847fc92b"], null)
 
 //# sourceMappingURL=sanya.36361745.js.map
