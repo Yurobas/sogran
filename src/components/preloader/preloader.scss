@@ -23,6 +23,11 @@
     letter-spacing: -0.01em;
     transition: transform $transition, opacity $transition;
     opacity: 1;
+    
+    &::after {
+      content: '%';
+    }
+
     @media (max-width: 1439px) {
       font-size: 40px;
     }

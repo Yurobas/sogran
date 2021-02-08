@@ -290,7 +290,7 @@ var anim = function (duration, cb) {
 
 function default_1() {
   return __awaiter(this, void 0, Promise, function () {
-    var delay, isLoaded, loaded, progress, status;
+    var delay, isLoaded, loaded, status;
     return __generator(this, function (_a) {
       switch (_a.label) {
         case 0:
@@ -313,7 +313,14 @@ function default_1() {
         case 1:
           _a.sent();
 
-          setData(100);
+          return [4
+          /*yield*/
+          , setData(100)];
+
+        case 2:
+          _a.sent();
+
+          document.querySelector('.preloader').classList.add('--off');
           return [2
           /*return*/
           ];
@@ -368,7 +375,8 @@ function setData(progress) {
 }
 
 function render(progress) {
-  console.log(progress);
+  progress |= progress;
+  document.querySelector('.preloader__value').innerHTML = progress.toString().padStart(3, '0');
 }
 
 function wait(time, cb) {
@@ -398,10 +406,10 @@ var Slider =
 /** @class */
 function () {
   function Slider(el) {
-    this.touchId = null;
+    this._touchId = null;
     this.coordStart = 0;
-    this.coordCurrent = 0;
     this.nextSlide = 0;
+    this.prevSlide = 0;
     this.activeSlide = 0;
     this.container = document.querySelector(el);
     this.sliderWidth = this.container.getBoundingClientRect().width;
@@ -409,6 +417,25 @@ function () {
     this.listeners();
     this.touchListeners();
   }
+
+  Object.defineProperty(Slider.prototype, "coordCurrent", {
+    set: function (val) {
+      this.progress = (this.coordStart - val) / this.sliderWidth;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(Slider.prototype, "progress", {
+    get: function () {
+      return this._pr;
+    },
+    set: function (val) {
+      this._pr = -val;
+      this.move();
+    },
+    enumerable: false,
+    configurable: true
+  });
 
   Slider.prototype.listeners = function () {
     var _this = this;
@@ -428,12 +455,16 @@ function () {
     var _this = this;
 
     this.container.addEventListener('touchstart', function (event) {
-      if (_this.touchId) return;
+      if (_this._touchId) return;
+
+      _this.disableTransition();
+
       var _a = event.changedTouches[0],
           pageX = _a.pageX,
           identifier = _a.identifier;
       _this.coordStart = pageX;
-      _this.touchId = identifier;
+      _this.coordCurrent = pageX;
+      _this._touchId = identifier;
       _this.isDragable = true;
       console.log('start: ', event);
     });
@@ -445,15 +476,6 @@ function () {
       if (!item) return;
       var pageX = item.pageX;
       _this.coordCurrent = pageX;
-      var translate = (_this.coordStart - _this.coordCurrent) / _this.sliderWidth * 100;
-
-      if (translate > 0) {
-        _this.imageMove(translate);
-      } else {
-        _this.imageMove(translate);
-      }
-
-      console.log('move: ', event);
     });
     document.addEventListener('touchend', function (event) {
       _this.isDragable = false;
@@ -464,46 +486,280 @@ function () {
       var pageX = item.pageX;
       _this.coordCurrent = pageX;
 
-      _this.goTo();
+      _this.goTo(3);
 
-      var id = event.changedTouches[0].identifier;
-      if (_this.touchId !== id) return;
-      _this.coordStart = 0;
-      _this.coordCurrent = 0;
       console.log('end: ', event);
     });
   };
 
+  Slider.prototype.disableTransition = function () {};
+
+  Slider.prototype.enableTransition = function () {};
+
   Slider.prototype.findActiveTouch = function (arr) {
     var items = __spreadArrays(arr);
 
-    var touchId = this.touchId;
+    var _touchId = this._touchId;
     var item = items.find(function (item) {
-      return touchId === item.identifier;
+      return _touchId === item.identifier;
     });
     return item;
   };
 
-  Slider.prototype.goTo = function () {};
-
-  Slider.prototype.imageMove = function (translate) {
+  Slider.prototype.goTo = function (slide) {
+    this.nextSlide = slide;
     var slides = this.slides;
+    this.enableTransition(); // switch(direction) {
+    //   case -1: 
+    //     slides[slide].classList.add('left')
+    //   default:
+    //     slides[slide].classList.add('right')
+    // }
+    // requestAnimationFrame(() => requestAnimationFrame(() => {
+    //   this.slides.forEach((item, index) => {
+    //     switch(true) {
+    //       case i < slide:
+    //         item.style.transform = `translateX(${-100}%)`
+    //         break
+    //       case slide:
+    //         item.style.transform = `translateX(${0}%)`
+    //         break
+    //       case slide + 1:
+    //         item.style.transform = `translateX(${100}%)`
+    //         break
+    //       default
+    //     }
+    //   })
+    // }))
+  };
 
-    if (translate > 0) {
-      this.nextSlide = Math.max(this.activeSlide - 1, 0);
+  Slider.prototype.move = function () {
+    var _a = this,
+        slides = _a.slides,
+        progress = _a.progress,
+        activeSlide = _a.activeSlide;
+
+    console.log(progress);
+
+    if (progress > 0) {
+      this.nextSlide = Math.max(activeSlide - 1, 0);
+      this.prevSlide = Math.min(activeSlide + 1, slides.length);
     } else {
-      this.nextSlide = Math.min(this.activeSlide + 1, slides.length);
+      this.nextSlide = Math.min(activeSlide + 1, slides.length);
+      this.prevSlide = Math.max(activeSlide - 1, 0);
     }
 
-    var nextSlide = this.nextSlide;
-    slides[nextSlide].style.transform = "translate3d(" + translate + "%, 0, 0)";
+    var _b = this,
+        nextSlide = _b.nextSlide,
+        prevSlide = _b.prevSlide;
+
+    slides[nextSlide].style.transform = "translate3d(" + (nextSlide === activeSlide ? progress * 100 * .3 : progress * 100) + "%, 0, 0)";
+    slides[prevSlide].style.transform = "";
   };
 
   return Slider;
 }();
 
 exports.default = Slider;
-},{}],"index.ts":[function(require,module,exports) {
+},{}],"js/animateBlocks.ts":[function(require,module,exports) {
+"use strict";
+
+var __spreadArrays = this && this.__spreadArrays || function () {
+  for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+
+  for (var r = Array(s), k = 0, i = 0; i < il; i++) for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) r[k] = a[j];
+
+  return r;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  __spreadArrays(document.querySelectorAll('.animate')).forEach(function (item) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('--animated');
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px',
+      threshold: .5
+    });
+    observer.observe(item);
+  });
+};
+},{}],"js/globalListeners.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.clickOutside = clickOutside;
+exports.keyupEsc = keyupEsc;
+const listeners = [];
+globalThis?.addEventListener('click', event => {
+  function isClickInside(event, el) {
+    if (el instanceof Function) {
+      el = el();
+    }
+
+    if (!el) {
+      return;
+    }
+
+    if (event.path) {
+      return event.path.includes(el);
+    }
+
+    if (document.body.contains(event.target)) {
+      return el.contains(event.target);
+    }
+
+    return true;
+  }
+
+  listeners.forEach(([item, ignoreEls, cb]) => {
+    // 2 проверки, 1 надежная, 2 резервный план
+    // если 1 метод не работает то он возвращает тру чтоб пошло ко 2
+    if (isClickInside(event, item)) {
+      return;
+    }
+
+    const isAllInside = ignoreEls?.some(el => isClickInside(event, el)) ?? true;
+
+    if (isAllInside) {
+      return;
+    }
+
+    cb(event, item);
+  });
+});
+/**
+ * 
+ * @param {HTMLElement} target Элемент
+ * @param {Array<HTMLElement|Function>} ignoreEls Массив элементов снаружи таргета, клик по которым тоже возможен, можно передать функцию которая вернет элемент
+ * @param {Function} [callback] Коллбек после клика снаружи
+ * @returns {Function} Функция удаления обработчика
+ */
+
+function clickOutside(target, ignoreEls, callback) {
+  if (ignoreEls instanceof Function) {
+    callback = ignoreEls;
+    ignoreEls = [];
+  }
+
+  const arr = [target, ignoreEls, callback];
+  listeners.push(arr);
+  return () => {
+    const index = listeners.indexOf(arr);
+
+    if (!~index) {
+      // если не нашло
+      return;
+    }
+
+    listeners.splice(listeners.indexOf(arr), 1);
+  };
+}
+
+const keyListeners = [];
+globalThis?.addEventListener('keyup', event => {
+  keyListeners.forEach(([cb]) => {
+    cb(event);
+  });
+});
+
+function keyupEsc(callback) {
+  const arr = [event => {
+    const {
+      which,
+      code,
+      key,
+      keyCode
+    } = event;
+
+    if (which === 27 || keyCode === 27 || code === 'Escape' || key === 'Escape') {
+      return callback(event);
+    }
+  }];
+  keyListeners.push(arr);
+  return () => {
+    const index = keyListeners.indexOf(arr);
+
+    if (!~index) {
+      // если не нашло
+      return;
+    }
+
+    keyListeners.splice(keyListeners.indexOf(arr), 1);
+  };
+}
+},{}],"js/pop.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.productTooltipInit = void 0;
+
+var globalListeners_1 = require("./globalListeners");
+
+function productTooltipInit() {
+  var items = document.querySelectorAll('.productTooltip');
+  var classes = ['--left', '--right'];
+  items.forEach(function (item) {
+    // @ts-ignore
+    globalListeners_1.clickOutside(item, function () {
+      item.classList.remove('--active');
+    });
+    item.querySelector('.productTooltip__icon').addEventListener('click', function (event) {
+      var node = event.currentTarget;
+      var block = item.querySelector('.productTooltip__info');
+
+      if (!item.classList.contains('--active')) {
+        Object.assign(block.style, {
+          opacity: 0,
+          transition: 'none'
+        });
+        item.classList.add('--active');
+
+        var _a = block.getBoundingClientRect(),
+            right = _a.right,
+            left = _a.left,
+            width = _a.width;
+
+        var clientWidth = document.documentElement.clientWidth;
+
+        if (clientWidth - right < 30) {
+          item.classList.remove('--right');
+          item.classList.add('--left');
+        } else if (left < 30) {
+          item.classList.add('--right');
+          item.classList.remove('--left');
+        }
+
+        item.classList.remove('--active');
+      }
+
+      requestAnimationFrame(function () {
+        return requestAnimationFrame(function () {
+          Object.assign(block.style, {
+            opacity: '',
+            transition: ''
+          });
+          item.classList.toggle('--active');
+        });
+      });
+    });
+  });
+}
+
+exports.productTooltipInit = productTooltipInit;
+},{"./globalListeners":"js/globalListeners.js"}],"index.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -520,11 +776,17 @@ var preloader_1 = __importDefault(require("./js/preloader"));
 
 var slider_1 = __importDefault(require("./js/slider"));
 
+var animateBlocks_1 = __importDefault(require("./js/animateBlocks"));
+
 new slider_1.default('.slider__container');
+
+var pop_1 = require("./js/pop");
+
+pop_1.productTooltipInit();
 preloader_1.default().then(function () {
-  console.log('done');
+  animateBlocks_1.default();
 });
-},{"./js/preloader":"js/preloader.ts","./js/slider":"js/slider.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./js/preloader":"js/preloader.ts","./js/slider":"js/slider.ts","./js/animateBlocks":"js/animateBlocks.ts","./js/pop":"js/pop.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
