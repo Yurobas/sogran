@@ -54,7 +54,8 @@
     margin-bottom: $marginSection;
     padding-bottom: 20px;
     background-color: $white;
-    @media (max-width: 1439px) {
+    @media (max-width: 1023px) {
+      margin-bottom: 0;
       padding: 30px 0;
       font-size: 14px;
     }

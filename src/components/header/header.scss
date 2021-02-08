@@ -82,6 +82,7 @@
       height: 2px;
       background-color: $red;
       transition: transform $transition;
+      will-change: transform;
     }
     &:after {
       margin-top: 10px;

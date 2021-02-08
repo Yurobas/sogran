@@ -16144,6 +16144,11 @@ button {
     height: 580px;
   }
 }
+@media (max-width: 1023px) {
+  .map {
+    height: 300px;
+  }
+}
 
 .red {
   color: #E00C0C;
@@ -16203,8 +16208,18 @@ button {
   width: calc(1 / 3 * 100% - 30px);
   margin: 0 30px 0 0;
 }
+@media (max-width: 1023px) {
+  .form__block {
+    width: calc(50% - 30px);
+  }
+}
 .form__block.--wide {
   width: calc(2 / 3 * 100% - 30px);
+}
+@media (max-width: 1023px) {
+  .form__block.--wide {
+    width: 100%;
+  }
 }
 .form__label {
   position: relative;
@@ -16254,7 +16269,7 @@ button {
   border-bottom: 1px solid #212121;
   transition: border-color 0.25s ease;
 }
-.form__input:focus ~ .form__placeholder {
+.form__input[type=text]:not(:placeholder-shown) ~ .form__placeholder, .form__input:focus ~ .form__placeholder {
   color: #4E4E4E;
   transform: translate3d(-7%, -6px, 0) scale3d(0.8, 0.8, 0.8);
 }
@@ -16291,9 +16306,15 @@ button {
   position: absolute;
   top: 15px;
   right: 0;
+  cursor: pointer;
 }
 .form__footer {
   margin-top: 60px;
+}
+@media (max-width: 1023px) {
+  .form__footer {
+    margin-top: 35px;
+  }
 }
 
 .close {
@@ -16503,6 +16524,7 @@ button {
   height: 2px;
   background-color: #E00C0C;
   transition: transform 0.25s ease;
+  will-change: transform;
 }
 .header__burger:after {
   margin-top: 10px;
@@ -16767,6 +16789,11 @@ button {
 @media (max-width: 1439px) {
   .sectionHeader__title.--short {
     max-width: 580px;
+  }
+}
+@media (max-width: 1023px) {
+  .sectionHeader__title.--short {
+    max-width: 400px;
   }
 }
 .sectionHeader__title + .sectionHeader__description {
@@ -17098,8 +17125,9 @@ button {
   padding-bottom: 20px;
   background-color: #fff;
 }
-@media (max-width: 1439px) {
+@media (max-width: 1023px) {
   .about__description {
+    margin-bottom: 0;
     padding: 30px 0;
     font-size: 14px;
   }
@@ -17164,6 +17192,11 @@ button {
     margin-top: 60px;
   }
 }
+@media (max-width: 1023px) {
+  .clients__list {
+    margin-top: 30px;
+  }
+}
 .clients__item {
   display: flex;
   align-items: center;
@@ -17173,6 +17206,11 @@ button {
 .consult__content {
   padding: 60px 0 90px;
   background-color: #fff;
+}
+@media (max-width: 1023px) {
+  .consult__content {
+    padding: 60px 0;
+  }
 }
 .consult__form {
   padding-left: 15px;
@@ -17187,12 +17225,22 @@ button {
   flex-direction: column;
   padding: 120px 0;
 }
+@media (max-width: 1023px) {
+  .contacts__info {
+    padding: 100px 0 30px;
+  }
+}
 .contacts__address {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
   margin-left: 75px;
+}
+@media (max-width: 1023px) {
+  .contacts__address {
+    margin-top: 30px;
+  }
 }
 .contacts__address-links {
   margin: auto 0;
@@ -17219,6 +17267,12 @@ button {
     font-size: 30px;
   }
 }
+@media (max-width: 1023px) {
+  .contacts__address-link.--tel {
+    margin: 0;
+    font-size: 25px;
+  }
+}
 .contacts__address-text {
   font-size: 20px;
   line-height: 1.6;
@@ -17226,6 +17280,11 @@ button {
 @media (max-width: 1439px) {
   .contacts__address-text {
     font-size: 18px;
+  }
+}
+@media (max-width: 1023px) {
+  .contacts__address-text {
+    margin-top: 30px;
   }
 }
 
