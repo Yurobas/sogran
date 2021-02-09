@@ -2,6 +2,7 @@
   position: absolute;
   z-index: 10;
   &.--active {
+    z-index: 15;
     & .productTooltip__icon {
       transform: rotate(45deg);
       &:hover {

@@ -16838,6 +16838,9 @@ button {
   position: absolute;
   z-index: 10;
 }
+.productTooltip.--active {
+  z-index: 15;
+}
 .productTooltip.--active .productTooltip__icon {
   transform: rotate(45deg);
 }

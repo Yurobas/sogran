@@ -1,7 +1,7 @@
 
 const listeners = []
 
-globalThis?.addEventListener('click', event => {
+globalThis.addEventListener('click', event => {
 
   function isClickInside(event, el){
     if (el instanceof Function) {
@@ -31,7 +31,7 @@ globalThis?.addEventListener('click', event => {
       return
     }
 
-    const isAllInside = ignoreEls?.some(el => isClickInside(event, el)) ?? true
+    const isAllInside = ignoreEls.some(el => isClickInside(event, el)) ?? true
 
     if (isAllInside) {
       return
@@ -71,7 +71,7 @@ export function clickOutside(target, ignoreEls, callback) {
 
 const keyListeners = []
 
-globalThis?.addEventListener('keyup', event => {
+globalThis.addEventListener('keyup', event => {
 
   keyListeners.forEach(([cb]) => {
     cb(event)

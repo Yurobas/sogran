@@ -601,7 +601,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.clickOutside = clickOutside;
 exports.keyupEsc = keyupEsc;
 const listeners = [];
-globalThis?.addEventListener('click', event => {
+globalThis === null || globalThis === void 0 ? void 0 : globalThis.addEventListener('click', event => {
   function isClickInside(event, el) {
     if (el instanceof Function) {
       el = el();
@@ -629,7 +629,7 @@ globalThis?.addEventListener('click', event => {
       return;
     }
 
-    const isAllInside = ignoreEls?.some(el => isClickInside(event, el)) ?? true;
+    const isAllInside = (ignoreEls === null || ignoreEls === void 0 ? void 0 : ignoreEls.some(el => isClickInside(event, el))) ?? true;
 
     if (isAllInside) {
       return;
@@ -667,7 +667,7 @@ function clickOutside(target, ignoreEls, callback) {
 }
 
 const keyListeners = [];
-globalThis?.addEventListener('keyup', event => {
+globalThis === null || globalThis === void 0 ? void 0 : globalThis.addEventListener('keyup', event => {
   keyListeners.forEach(([cb]) => {
     cb(event);
   });
@@ -814,7 +814,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57173" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62099" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
