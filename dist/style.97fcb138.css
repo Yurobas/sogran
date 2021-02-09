@@ -16237,6 +16237,9 @@ button {
   color: #4E4E4E;
   transform: translate3d(-7%, -6px, 0) scale3d(0.8, 0.8, 0.8);
 }
+.form__label.--file {
+  cursor: pointer;
+}
 .form__label.--file .form__input {
   position: absolute;
   width: 0;
@@ -16250,6 +16253,7 @@ button {
   line-height: unset;
   border-bottom: 1px solid #212121;
   transform: none;
+  cursor: pointer;
 }
 .form__label.--file .form__placeholder-text {
   text-overflow: ellipsis;
@@ -16261,7 +16265,6 @@ button {
   height: 23px;
   margin-left: 2px;
   background: url("/close.50bf71c2.svg") 50% 50%/contain no-repeat;
-  cursor: pointer;
 }
 .form__input {
   width: 100%;
