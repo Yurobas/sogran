@@ -1,16 +1,26 @@
 .header {
-  position: sticky;
   width: 100%;
   padding: 20px 0;
   background-color: $white;
-  transform: translate3d(0, -100%, 0);
-  transition: padding $transition, transform $transition, box-shadow $transition;
   z-index: 100;
-  &.--scroll {
-    top: 0;
+  @media (max-width: 1439px) {
     padding: 15px 0;
+  }
+  @media (max-width: 767px) {
+    padding: 15px 30px;
+  }
+  &.--hide {
+    position: fixed;
+    top: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  &.--scroll {
+    padding-top: 15px;
+    padding-bottom: 15px;
     transform: none;
     box-shadow: $shadowBold;
+    transition: transform $transition, box-shadow $transition;
+    
     & .header__container {
       justify-content: flex-start;
     }
@@ -63,14 +73,25 @@
       }
     }
   }
+  &__contacts {
+    @media (max-width: 1439px) {
+      margin-left: auto;
+    }
+  }
   &__phone {
     font-size: 18px;
     font-weight: 500;
     white-space: nowrap;
+    @media (max-width: 1023px) {
+      font-size: 14px;
+    }
   }
   &__button {
     display: none;
     margin-left: 35px;
+    @media (max-width: 1919px) {
+      min-width: 220px;
+    }
   }
   &__burger {
     display: none;
@@ -85,7 +106,7 @@
       will-change: transform;
     }
     &:after {
-      margin-top: 10px;
+      margin-top: 8px;
     }
     &.--active {
       &:after {

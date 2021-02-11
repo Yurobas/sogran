@@ -387,6 +387,38 @@ function wait(time, cb) {
     }, time);
   });
 }
+},{}],"js/header.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initHeader = void 0;
+var header = document.querySelector('.header');
+var height = header.getBoundingClientRect().height;
+var wrapper = document.querySelector('.wrapper');
+
+function initHeader() {
+  window.addEventListener('scroll', function (event) {
+    var scrollY = window.scrollY;
+
+    if (scrollY > height) {
+      header.classList.add('--hide');
+      wrapper.style.paddingTop = height + "px";
+    } else {
+      header.classList.remove('--hide');
+      wrapper.style.paddingTop = '';
+    }
+
+    if (scrollY > 400) {
+      header.classList.add('--scroll');
+    } else {
+      header.classList.remove('--scroll');
+    }
+  });
+}
+
+exports.initHeader = initHeader;
 },{}],"js/slider.ts":[function(require,module,exports) {
 "use strict";
 
@@ -601,7 +633,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.clickOutside = clickOutside;
 exports.keyupEsc = keyupEsc;
 const listeners = [];
-globalThis === null || globalThis === void 0 ? void 0 : globalThis.addEventListener('click', event => {
+globalThis.addEventListener('click', event => {
   function isClickInside(event, el) {
     if (el instanceof Function) {
       el = el();
@@ -623,13 +655,15 @@ globalThis === null || globalThis === void 0 ? void 0 : globalThis.addEventListe
   }
 
   listeners.forEach(([item, ignoreEls, cb]) => {
+    var _ignoreEls$some;
+
     // 2 проверки, 1 надежная, 2 резервный план
     // если 1 метод не работает то он возвращает тру чтоб пошло ко 2
     if (isClickInside(event, item)) {
       return;
     }
 
-    const isAllInside = (ignoreEls === null || ignoreEls === void 0 ? void 0 : ignoreEls.some(el => isClickInside(event, el))) ?? true;
+    const isAllInside = (_ignoreEls$some = ignoreEls.some(el => isClickInside(event, el))) !== null && _ignoreEls$some !== void 0 ? _ignoreEls$some : true;
 
     if (isAllInside) {
       return;
@@ -667,7 +701,7 @@ function clickOutside(target, ignoreEls, callback) {
 }
 
 const keyListeners = [];
-globalThis === null || globalThis === void 0 ? void 0 : globalThis.addEventListener('keyup', event => {
+globalThis.addEventListener('keyup', event => {
   keyListeners.forEach(([cb]) => {
     cb(event);
   });
@@ -774,6 +808,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var preloader_1 = __importDefault(require("./js/preloader"));
 
+var header_1 = require("./js/header");
+
 var slider_1 = __importDefault(require("./js/slider"));
 
 var animateBlocks_1 = __importDefault(require("./js/animateBlocks"));
@@ -785,8 +821,9 @@ var pop_1 = require("./js/pop");
 pop_1.productTooltipInit();
 preloader_1.default().then(function () {
   animateBlocks_1.default();
+  header_1.initHeader();
 });
-},{"./js/preloader":"js/preloader.ts","./js/slider":"js/slider.ts","./js/animateBlocks":"js/animateBlocks.ts","./js/pop":"js/pop.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./js/preloader":"js/preloader.ts","./js/header":"js/header.ts","./js/slider":"js/slider.ts","./js/animateBlocks":"js/animateBlocks.ts","./js/pop":"js/pop.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -814,7 +851,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62099" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50540" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

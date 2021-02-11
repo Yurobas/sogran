@@ -1,4 +1,5 @@
 import preloader from './js/preloader'
+import { initHeader } from './js/header'
 import Slider from './js/slider'
 import initAnimations from './js/animateBlocks'
 
@@ -10,4 +11,5 @@ productTooltipInit()
 preloader()
     .then(() => {
         initAnimations()
+        initHeader()
     })

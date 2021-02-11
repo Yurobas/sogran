@@ -1,4 +1,7 @@
 .about {
+  @media (max-width: 767px) {
+    background-color: $white;
+  }
   &__info {
     position: relative;
     z-index: 2;
@@ -11,6 +14,12 @@
     background-color: $black;
     @media (max-width: 1439px) {
       height: 400px;
+    }
+    @media (max-width: 1023px) {
+      height: 350px;
+    }
+    @media (max-width: 767px) {
+      height: 220px;
     }
     &-link {
       display: flex;
@@ -26,6 +35,18 @@
       border-radius: 50%;
       background-color: $white;
       transition: background-color $transition;
+      @media (max-width: 1439px) {
+        width: 108px;
+        height: 108px;
+      }
+      @media (max-width: 1023px) {
+        width: 90px;
+        height: 90px;
+      }
+      @media (max-width: 767px) {
+        width: 60px;
+        height: 60px;
+      }
       &:after {
         content: '';
         display: block;
@@ -39,6 +60,22 @@
         border-left: 28px solid $red;
         border-bottom: 20px solid transparent;
         transition: border-color $transition;
+        @media (max-width: 1439px) {
+          left: calc(50% + 3px);
+          border-top-width: 18px;
+          border-left-width: 25px;
+          border-bottom-width: 18px;
+        }
+        @media (max-width: 1023px) {
+          border-top-width: 15px;
+          border-left-width: 22px;
+          border-bottom-width: 16px;
+        }
+        @media (max-width: 767px) {
+          border-top-width: 10px;
+          border-left-width: 15px;
+          border-bottom-width: 11px;
+        }
       }
       &:hover {
         background-color: $red;

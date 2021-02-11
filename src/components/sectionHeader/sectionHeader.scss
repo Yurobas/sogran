@@ -6,6 +6,9 @@
   }
   &__row {
     display: flex;
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
   }
   &__icon {
     min-width: $headerIconWidth;
@@ -24,6 +27,11 @@
     @media (max-width: 1023px) {
       $headerIconWidth: 45px !global;
       min-width: $headerIconWidth;
+      margin: 21px 15px 0 0;
+    }
+    @media (max-width: 767px) {
+      width: 45px;
+      margin: 0 0 30px;
     }
   }
   &__title {
@@ -36,6 +44,7 @@
     }
     @media (max-width: 1023px) {
       font-size: 25px;
+      letter-spacing: 0.08em;
     }
     &.--short {
       max-width: 745px;
@@ -43,7 +52,7 @@
         max-width: 580px;
       }
       @media (max-width: 1023px) {
-        max-width: 400px;
+        max-width: 435px;
       }
     }
     & + .sectionHeader__description {
