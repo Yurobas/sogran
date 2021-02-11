@@ -6,12 +6,13 @@ section.section.portfolio
         'Более 700 объектов построено с нашей помощью'
       )
   .container
-    .slider.row
-      .slider__container.col-19.p-0
-        .slider__item
-          img(class="slider__image" src="/images/slider/slide-1.jpg", alt="Картинка")
-        .slider__item
-          img(class="slider__image" src="/images/slider/slide-1.jpg", alt="Картинка")
+    .slider.slider__swiper.row
+      .slider__container.swiper-container.col-19.p-0
+        .swiper-wrapper
+          .slider__item.swiper-slide
+            img(class="slider__image" src="/images/slider/slide-1.jpg", alt="Картинка")
+          .slider__item.swiper-slide
+            img(class="slider__image" src="/images/slider/slide-1.jpg", alt="Картинка")
       .slider__content.col-10.pl-2.pr-1
         .slider__box
           ul.slider__list
