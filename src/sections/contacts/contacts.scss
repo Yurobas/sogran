@@ -14,9 +14,19 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    margin-left: $headerIconWidth + $headerIconOffset;
+    margin-left: 130px;
+    @media (max-width: 1919px) {
+      margin-left: 110px;
+    }
+    @media (max-width: 1439px) {
+      margin-left: 80px;
+    }
     @media (max-width: 1023px) {
       margin-top: 30px;
+      margin-left: 60px;
+    }
+    @media (max-width: 767px) {
+      margin-left: 0;
     }
     &-links {
       margin: auto 0;
@@ -29,6 +39,9 @@
       background: unset;
       @media (max-width: 1439px) {
         font-size: 22px;
+      }
+      @media (max-width: 1023px) {
+        font-size: 18px;
       }
       &.--tel {
         margin-bottom: 8px;

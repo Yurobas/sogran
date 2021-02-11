@@ -1,4 +1,7 @@
 .consult {
+  @media (max-width: 767px) {
+    background-color: $white;
+  }
   &__content {
     padding: 60px 0 90px;
     background-color: $white;
@@ -8,5 +11,8 @@
   }
   &__form {
     padding-left: 15px;
+    @media (max-width: 767px) {
+      padding: 0;
+    }
   }
 }

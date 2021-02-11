@@ -87,6 +87,10 @@ button {
   cursor: pointer;
 }
 
+label {
+  margin-bottom: 0;
+}
+
 .container {
   max-width: 1920px;
 }
@@ -259,6 +263,11 @@ button {
   }
   @media (max-width: 1023px) {
     height: 300px;
+  }
+  @media (max-width: 767px) {
+    width: calc(100% + 60px);
+    height: 225px;
+    margin: 0 -30px;
   }
 }
 
