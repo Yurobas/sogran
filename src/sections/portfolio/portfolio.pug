@@ -1,19 +1,21 @@
 section.section.portfolio
   .container
     .row
-      +sectionHeader(
-        ' col-29 pl-3 pr-0',
-        'Более 700 объектов построено с нашей помощью'
-      )
+      .sectionHeader.col-xxl-29.col-xl-31.col-lg-30.pl-xxl-3.pl-xl-1.pl-lg-2.pl-md-1.pr-0
+        .sectionHeader__row
+          .sectionHeader__icon
+          .sectionHeader__content
+            h2.sectionHeader__title.title.--short Более 700 объектов построено с нашей помощью
   .container
     .slider.slider__swiper.row
-      .slider__container.swiper-container.col-19.p-0
-        .swiper-wrapper
-          .slider__item.swiper-slide
-            img(class="slider__image" src="/images/slider/slide-1.jpg", alt="Картинка")
-          .slider__item.swiper-slide
-            img(class="slider__image" src="/images/slider/slide-1.jpg", alt="Картинка")
-      .slider__content.col-10.pl-2.pr-1
+      .slider__container.col-xl-19.col-lg-18.pr-md-1.p-0
+        .swiper-container
+          .swiper-wrapper
+            .slider__item.swiper-slide
+              img(class="slider__image" src="/images/slider/slide-1.jpg", alt="Картинка")
+            .slider__item.swiper-slide
+              img(class="slider__image" src="/images/slider/slide-1.jpg", alt="Картинка")
+      .slider__content.col-xxl-10.col-lg-12.pl-lg-2.pl-md-3.pr-lg-1.pr-md-10.mr-md-1
         .slider__box
           ul.slider__list
             li.slider__item

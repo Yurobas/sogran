@@ -1,11 +1,16 @@
 .portfolio {
-
-  & .sectionHeader {
-    padding-top: 90px;
-    padding-bottom: 30px;
+  @media (max-width: 1023px) {
     background-color: $white;
   }
-  & .sectionHeader__title {
-    max-width: 680px;
+  & .sectionHeader {
+    padding-top: 90px;
+    padding-bottom: 60px;
+    background-color: $white;
+    @media (max-width: 1023px) {
+      padding: 60px 0;
+    }
+    @media (max-width: 767px) {
+      padding: 60px 0 30px;
+    }
   }
 }

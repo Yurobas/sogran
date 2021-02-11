@@ -1,17 +1,15 @@
 import Swiper, { Navigation, Pagination } from 'swiper'
- import 'swiper/swiper-bundle.css';
+import 'swiper/swiper-bundle.css';
 
  Swiper.use([Navigation, Pagination])
 
  export default (className = '.slider__swiper') => {
    const slider = new Swiper(className, {
+     loop: true,
      navigation: {
        nextEl: '.slider__arrow.--right',
        prevEl: '.slider__arrow.--left'
      },
-     pagination: {
-       el: '.qwe',
-     }
    })
 
    slider.on('slideChangeTransitionStart', () => {

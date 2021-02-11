@@ -9,7 +9,7 @@ productTooltipInit()
 
 preloader()
     .then(() => {
-        Slider('.slider__container');
+        Slider('.slider__container .swiper-container');
         initAnimations()
         initHeader()
     })
