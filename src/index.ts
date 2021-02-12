@@ -3,6 +3,8 @@ import { initHeader } from './js/header'
 import Slider from './js/slider'
 import initAnimations from './js/animateBlocks'
 
+import From from './js/form'
+
 import { productTooltipInit } from './js/pop'
 
 productTooltipInit()
@@ -12,4 +14,6 @@ preloader()
         Slider('.slider__container .swiper-container');
         initAnimations()
         initHeader()
+
+        document.querySelectorAll('form').forEach(item => new From(item))
     })
