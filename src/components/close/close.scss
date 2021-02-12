@@ -3,10 +3,39 @@
   top: 30px;
   right: 30px;
   cursor: pointer;
+  z-index: 1;
+  &:hover {
+    & .close__block {
+      &:after,
+      &:before {
+        background-color: $black;
+      }
+    }
+  }
+  &.--white {
+    &:hover {
+      & .close__block {
+        &:after,
+        &:before {
+          background-color: $red;
+        }
+      }
+    }
+    & .close__block {
+      &:after,
+      &:before {
+        background-color: $white;
+      }
+    }
+  }
   &__block {
     position: relative;
     width: 24px;
     height: 24px;
+    @media (max-width: 767px) {
+      width: 20px;
+      height: 20px;
+    }
     &:after,
     &:before {
       content: '';
@@ -16,8 +45,12 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) rotate(-45deg);
       background-color: $red;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      transition: background-color $transition;
+      @media (max-width: 767px) {
+        width: 26px;
+      }
     }
     &:after {
       transform: translate(-50%, -50%) rotate(45deg);

@@ -1,8 +1,8 @@
 mixin sectionHeader(classes, title, description)
   div(class="sectionHeader" + classes)
     .sectionHeader__row
-      .sectionHeader__icon
+      .sectionHeader__icon.animate
       .sectionHeader__content
-        h2.sectionHeader__title.title= title
+        h2.animate.sectionHeader__title.title= title
         if description
-          p.sectionHeader__description= description
+          p.animate.sectionHeader__description= description

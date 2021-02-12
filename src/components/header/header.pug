@@ -6,13 +6,12 @@ header.header
           .logo
             .logo__picture
               img(class="logo__image" src="./images/logo.svg")
+        input(class="header__trigger" type="checkbox" id="nav" name="nav")
         .header__nav
           .header__nav-container
             include ../nav/nav
-            .header__nav-close
-              include ../close/close
         address.header__contacts
           a(class="header__phone" href="tel:+74957952895") +7 (495) 795-28-95
-          a(class="header__button button --secondary" href="#") Оставить заявку
-        .header__burger
+          label(class="header__button button --secondary" for="callback") Оставить заявку
+        label(class="header__burger" for="nav")
 

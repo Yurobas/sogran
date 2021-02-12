@@ -2,6 +2,20 @@
   @media (max-width: 767px) {
     background-color: $white;
   }
+  &.--animated {
+    & .hero__title,
+    & .hero__description,
+    & .hero__benefits,
+    & .hero__button {
+      opacity: 1;
+      transform: none;
+    }
+    & .hero__background-box {
+      &:after {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+  }
   &__background {
     @media (max-width: 1023px) {
       height: 380px;
@@ -21,6 +35,19 @@
       position: relative;
       width: 100%;
       height: 100%;
+      overflow: hidden;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: $white;
+        transition: transform 1.35s .9s;
+        will-change: transform;
+      }
     }
     &-image {
       max-width: unset;
@@ -47,7 +74,15 @@
       padding: 0 0 60px;
     }
   }
+  &__title,
+  &__description,
+  &__benefits,
+  &__button {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
   &__title {
+    transition: transform .65s 1.95s, opacity .65s 1.95s;
     @media (max-width: 1023px) {
       max-width: 400px;
     }
@@ -60,6 +95,7 @@
     max-width: 500px;
     font-size: 20px;
     line-height: 1.6;
+    transition: transform .65s 2s, opacity .65s 2s;
     @media (max-width: 1439px) {
       font-size: 18px;
     }
@@ -67,6 +103,7 @@
   &__benefits {
     display: flex;
     margin: 30px 0 47px;
+    transition: transform .65s 2.05s, opacity .65s 2.05s;
     @media (max-width: 767px) {
       flex-wrap: wrap;
       margin-top: 12px;
@@ -113,6 +150,7 @@
     }
   }
   &__button {
+    transition: transform .65s 2.1s, opacity .65s 2.1s;
     @media (max-width: 767px) {
       width: 100%;
     }

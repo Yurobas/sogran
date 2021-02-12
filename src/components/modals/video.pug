@@ -1,0 +1,8 @@
+.modal.--video
+  input(class="modal__trigger" type="checkbox" id="video" name="video")
+  .modal__container
+    label(class="modal__around" for="video")
+    .modal__content
+      +close('video', ' --white')
+      iframe(width="100%" height="100%" src="https://www.youtube.com/embed/NmjFmADaAKk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+      

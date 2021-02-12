@@ -39,6 +39,7 @@ export default async function () :Promise<void> {
   await setData(100)
 
   document.querySelector('.preloader').classList.add('--off')
+  document.querySelector('.hero').classList.add('--animated')
 }
 
 let lastProgress = 0

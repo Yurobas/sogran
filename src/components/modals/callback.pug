@@ -1,0 +1,8 @@
+.modal.--card
+  input(class="modal__trigger" type="checkbox" id="callback" name="callback")
+  .modal__container
+    label(class="modal__around" for="callback")
+    .modal__content
+      +close('callback')
+      .modal__name Рассчитаем ваш проект и ответим на вопросы
+      include ../form/form

@@ -1,2 +1,3 @@
-div(class="close" title="Закрыть")
-  .close__block
+mixin close(id, color='')
+  label(class="close" + color for=id title="Закрыть")
+    .close__block

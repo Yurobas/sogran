@@ -54,7 +54,7 @@
     &.--value {
       & .form__placeholder {
         color: $grayBold;
-        transform: translate3d(-7%, -6px, 0) scale3d(.8, .8, .8);
+        transform: translate3d(-7%, -10px, 0) scale3d(.8, .8, .8);
       }
     }
     &.--file {
@@ -90,13 +90,15 @@
   &__input {
     width: 100%;
     padding: 14px 0;
+    font-size: 16px;
+    line-height: 1;
     border-bottom: 1px solid $black;
     transition: border-color $transition;
     &[type="text"]:not(:placeholder-shown),
     &:focus {
       & ~ .form__placeholder {
         color: $grayBold;
-        transform: translate3d(-7%, -6px, 0) scale3d(.8, .8, .8);
+        transform: translate3d(-7%, -10px, 0) scale3d(.8, .8, .8);
       }
     }
   }
@@ -136,6 +138,23 @@
   &__footer {
     margin-top: 60px;
     @media (max-width: 1023px) {
+      margin-top: 35px;
+    }
+  }
+}
+
+.modal {
+  & .form {
+    padding: 0;
+    &__row {
+      flex-direction: column;
+      margin: -15px 0 0;
+    }
+    &__block {
+      width: 100%;
+      margin: 15px 0 0;
+    }
+    &__footer {
       margin-top: 35px;
     }
   }

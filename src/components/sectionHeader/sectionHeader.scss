@@ -15,6 +15,12 @@
     height: 2px;
     margin: 30px 30px 0 0;
     background-color: $red;
+    &.animate {
+      transform: translate3d(-30px, 0, 0);
+      &.--animated {
+        transform: none;
+      }
+    }
     @media (max-width: 1919px) {
       min-width: 80px;
     }

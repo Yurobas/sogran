@@ -1,0 +1,36 @@
+form.consult__form.form(action="#0")
+  .form__row
+    .form__block
+      label.form__label.--value.--error
+        input(class="form__input text" placeholder=" " type="text" value="Иван")
+        .form__placeholder 
+          span.form__placeholder-text.text Имя
+        .form__error Ошибка
+    .form__block
+      label.form__label.--value
+        input(class="form__input text" placeholder=" " type="text" value="8 800 000 00 00")
+        .form__placeholder 
+          span.form__placeholder-text.text Телефон
+        .form__error Ошибка
+    .form__block
+      label.form__label
+        input(class="form__input text" placeholder=" " type="text")
+        .form__placeholder 
+          span.form__placeholder-text.text Email
+        .form__error Ошибка
+    .form__block
+      label.form__label.--file
+        input(class="form__input text" type="file")
+        .form__placeholder 
+          span.form__placeholder-text.text Прикрепить файл
+          span(class="form__placeholder-clear" title="Удалить файл")
+        img(class="form__icon" src="/images/icons/file.svg")
+        .form__error.--info Допустимые форматы jpg, pdf, xls. Файл не должен превышать 20MB.
+    .form__block.--wide
+      label.form__label
+        input(class="form__input text" placeholder=" " type="text")
+        .form__placeholder 
+          span.form__placeholder-text.text Ваш вопрос
+        .form__error Ошибка
+  .form__footer
+    button(class="button" type="submit") Оставить заявку

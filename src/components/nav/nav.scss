@@ -2,6 +2,9 @@
   @media (max-width: 1439px) {
     padding: 120px 60px;
   }
+  @media (max-width: 767px) {
+    padding: 120px 30px;
+  }
   &__list {
     display: flex;
     @media (max-width: 1439px) {
@@ -18,10 +21,14 @@
       color: $red;
     }
     @media (max-width: 1439px) {
-      padding: 12px 15px;
+      padding: 12px 0;
       font-size: 30px;
       line-height: 1.66;
       text-transform: uppercase;
+    }
+    @media (max-width: 767px) {
+      padding: 8px 0;
+      font-size: 20px;
     }
   }
   &__button {
@@ -29,6 +36,9 @@
     @media (max-width: 1439px) {
       display: inline-block;
       margin-top: 60px;
+    }
+    @media (max-width: 767px) {
+      width: 100%;
     }
   }
 }
