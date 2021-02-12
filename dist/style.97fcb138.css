@@ -17525,6 +17525,12 @@ label {
   z-index: 2;
   cursor: pointer;
 }
+@media (max-width: 1023px) {
+  .productTooltip__icon {
+    width: 30px;
+    height: 30px;
+  }
+}
 .productTooltip__icon:after, .productTooltip__icon:before {
   content: "";
   display: block;
@@ -17536,6 +17542,11 @@ label {
   transform: translate(-50%, -50%);
   transition: background-color 0.25s ease;
   background-color: #E00C0C;
+}
+@media (max-width: 1023px) {
+  .productTooltip__icon:after, .productTooltip__icon:before {
+    width: 13px;
+  }
 }
 .productTooltip__icon:after {
   transform: translate(-50%, -50%) rotate(90deg);
@@ -18205,7 +18216,7 @@ label {
 }
 @media (max-width: 1023px) {
   .contacts__address-link.--tel {
-    margin: 0;
+    margin-bottom: 3px;
     font-size: 25px;
   }
 }

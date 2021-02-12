@@ -401,7 +401,6 @@ var wrapper = document.querySelector('.wrapper');
 
 function initHeader() {
   wrapper.addEventListener('scroll', function (event) {
-    console.log(event);
     var scrollTop = wrapper.scrollTop;
 
     if (scrollTop > height) {
@@ -12851,7 +12850,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59291" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61081" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
