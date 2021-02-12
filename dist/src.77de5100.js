@@ -400,10 +400,11 @@ var height = header.getBoundingClientRect().height;
 var wrapper = document.querySelector('.wrapper');
 
 function initHeader() {
-  window.addEventListener('scroll', function (event) {
-    var scrollY = window.scrollY;
+  wrapper.addEventListener('scroll', function (event) {
+    console.log(event);
+    var scrollTop = wrapper.scrollTop;
 
-    if (scrollY > height) {
+    if (scrollTop > height) {
       header.classList.add('--hide');
       wrapper.style.paddingTop = height + "px";
     } else {
@@ -411,7 +412,7 @@ function initHeader() {
       wrapper.style.paddingTop = '';
     }
 
-    if (scrollY > 400) {
+    if (scrollTop > 400) {
       header.classList.add('--scroll');
     } else {
       header.classList.remove('--scroll');
@@ -12491,7 +12492,137 @@ exports.default = function () {
     observer.observe(item);
   });
 };
-},{}],"js/globalListeners.js":[function(require,module,exports) {
+},{}],"images/icons/marker.svg":[function(require,module,exports) {
+module.exports = "/marker.91eda5ec.svg";
+},{}],"js/checkMedia.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.checkMedia = checkMedia;
+
+function checkMedia() {
+  let media = null;
+  const width = window.screen.width;
+  width >= 1920 ? media = 'wide' : false;
+  width < 1920 && width >= 1440 ? media = 'desktop' : false;
+  width < 1440 && width >= 1024 ? media = 'notebook' : false;
+  width < 1024 && width >= 768 ? media = 'tablet' : false;
+  width < 768 ? media = 'phone' : false;
+  return media;
+}
+},{}],"js/map.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.map = map;
+
+var _marker = _interopRequireDefault(require("../images/icons/marker.svg"));
+
+var _checkMedia = require("./checkMedia");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function map() {
+  ymaps.ready(init);
+
+  function init() {
+    const map = new ymaps.Map("map", {
+      center: [55.716428, 37.769370],
+      controls: ['zoomControl'],
+      zoom: 12
+    });
+    let size = {
+      width: 0,
+      height: 0,
+      offsetX: 0,
+      offsetY: 0
+    };
+    let media = (0, _checkMedia.checkMedia)();
+    let {
+      width,
+      height,
+      offsetX,
+      offsetY
+    } = size;
+
+    switch (media) {
+      case 'wide':
+        width = 60;
+        height = 85;
+
+        offsetX: 0;
+
+        offsetY: 0;
+
+        break;
+
+      case 'desktop':
+        width = 60;
+        height = 85;
+
+        offsetX: 0;
+
+        offsetY: 0;
+
+        break;
+
+      case 'notebook':
+        width = 48;
+        height = 68;
+
+        offsetX: 0;
+
+        offsetY: 0;
+
+        break;
+
+      case 'tablet':
+        width = 38;
+        height = 54;
+
+        offsetX: 0;
+
+        offsetY: 0;
+
+        break;
+
+      case 'phone':
+        width = 38;
+        height = 54;
+
+        offsetX: 0;
+
+        offsetY: 0;
+
+        break;
+
+      default:
+        width = 60;
+        height = 85;
+
+        offsetX: 0;
+
+        offsetY: 0;
+
+        break;
+    }
+
+    const point = new ymaps.Placemark([55.716428, 37.769370], {
+      balloonContent: 'г. Москва, Рязанский проспект 26, строение 1'
+    }, {
+      iconLayout: 'default#image',
+      iconImageHref: _marker.default,
+      iconImageSize: [width, height],
+      iconImageOffset: [-30, -70]
+    });
+    map.geoObjects.add(point);
+  }
+}
+},{"../images/icons/marker.svg":"images/icons/marker.svg","./checkMedia":"js/checkMedia.js"}],"js/globalListeners.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12681,6 +12812,8 @@ var slider_1 = __importDefault(require("./js/slider"));
 
 var animateBlocks_1 = __importDefault(require("./js/animateBlocks"));
 
+var map_js_1 = require("./js/map.js");
+
 var pop_1 = require("./js/pop");
 
 pop_1.productTooltipInit();
@@ -12688,8 +12821,9 @@ preloader_1.default().then(function () {
   slider_1.default('.slider__container .swiper-container');
   animateBlocks_1.default();
   header_1.initHeader();
+  map_js_1.map();
 });
-},{"./js/preloader":"js/preloader.ts","./js/header":"js/header.ts","./js/slider":"js/slider.ts","./js/animateBlocks":"js/animateBlocks.ts","./js/pop":"js/pop.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./js/preloader":"js/preloader.ts","./js/header":"js/header.ts","./js/slider":"js/slider.ts","./js/animateBlocks":"js/animateBlocks.ts","./js/map.js":"js/map.js","./js/pop":"js/pop.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -12717,7 +12851,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61810" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59291" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
