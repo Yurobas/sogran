@@ -25,6 +25,4 @@ import 'swiper/swiper-bundle.css';
     }, 500);
    })
 
-   slider.on('slideChangeTransitionEnd', () => {
-  })
- } 
+}
