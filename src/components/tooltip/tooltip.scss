@@ -8,6 +8,7 @@
   transition: transform $transition, opacity $transition;
   will-change: transform;
   pointer-events: none;
+  z-index: 5;
   &__content {
     position: relative;
     width: 217px;

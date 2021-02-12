@@ -13,6 +13,7 @@
     position: fixed;
     top: 0;
     transform: translate3d(0, -100%, 0);
+    z-index: 100;
   }
   &.--scroll {
     padding-top: 15px;
@@ -29,6 +30,15 @@
     }
     & .logo__picture {
       height: 60px;
+      @media (max-width: 1439px) {
+        height: 52px;
+      }
+    }
+    & .logo__image {
+      height: 80px;
+      @media (max-width: 1439px) {
+        height: 69px;
+      }
     }
     & .header__contacts {
       margin-left: auto;
