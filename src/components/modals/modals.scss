@@ -28,6 +28,15 @@
         right: -4px;
       }
     }
+    & .modal__trigger {
+      &:checked {
+        & ~ .modal__container {
+          & iframe {
+            display: block;
+          }
+        }
+      }
+    }
     & .modal__container {
       padding: 30px;
     }
@@ -49,6 +58,9 @@
       @media (max-width: 767px) {
         width: 100%;
         height: 196px;
+      }
+      & iframe {
+        display: none;
       }
     }
   }

@@ -3,12 +3,13 @@ const height = header.getBoundingClientRect().height
 const wrapper = document.querySelector('.wrapper')
 
 export function initHeader() {
-  window.addEventListener('scroll', (event) => {
+  wrapper.addEventListener('scroll', (event) => {
+    console.log(event)
     const {
-      scrollY
-    } = window
+      scrollTop
+    } = wrapper
 
-    if (scrollY > height) {
+    if (scrollTop > height) {
       header.classList.add('--hide')
       wrapper.style.paddingTop = `${height}px`
     } else {
@@ -16,7 +17,7 @@ export function initHeader() {
       wrapper.style.paddingTop = '';
     }
 
-    if (scrollY > 400) {
+    if (scrollTop > 400) {
       header.classList.add('--scroll')
     } else {
       header.classList.remove('--scroll')
