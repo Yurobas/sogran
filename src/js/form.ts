@@ -33,6 +33,13 @@ export default class Form {
   }
 
   listeners(){
+
+    fetch('http://u1273386.isp.regruhosting.ru/api/session-id.php', {
+      method: 'GET',
+      mode: "no-cors",
+    })
+      .then(response => console.log(response))
+
     const fnFiles = (event: Event) => {
       this.testFile()
     }

@@ -46,8 +46,9 @@
       & .form__input {
         border-color: $red;
       }
-      & .form__error {
+      & .form__info {
         opacity: 1;
+        color: $red;
         transform: none;
       }
     }
@@ -68,8 +69,8 @@
       & .form__placeholder {
         position: static;
         width: 100%;
-        padding: 14px 58px 14px 0;
-        line-height: unset;
+        padding: 11px 58px 11px 0;
+        line-height: 1;
         border-bottom: 1px solid $black;
         transform: none;
         cursor: pointer;
@@ -84,6 +85,10 @@
           margin-left: 2px;
           background: url('/images/icons/close.svg') 50% 50%/contain no-repeat;
         }
+      }
+      & .form__info {
+        opacity: 1;
+        transform: none;
       }
     }
   }
@@ -115,19 +120,14 @@
       transform: translate3d(0, 60%, 0);
     }
   }
-  &__error {
+  &__info {
     margin-top: 10px;
     opacity: 0;
-    color: $red;
+    color: $grayBold;
     font-size: 12px;
     line-height: 1.25;
     transform: translate3d(0, 10px, 0);
     transition: opacity $transition, transform $transition;
-    &.--info {
-      opacity: 1;
-      color: $grayBold;
-      transform: none;
-    }
   }
   &__icon {
     position: absolute;
@@ -139,6 +139,9 @@
     margin-top: 60px;
     @media (max-width: 1023px) {
       margin-top: 35px;
+    }
+    & .button {
+      width: auto;
     }
   }
 }
