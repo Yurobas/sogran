@@ -4,7 +4,6 @@ const wrapper = document.querySelector('.wrapper')
 
 export function initHeader() {
   wrapper.addEventListener('scroll', (event) => {
-    console.log(event)
     const {
       scrollTop
     } = wrapper
