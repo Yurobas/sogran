@@ -26,22 +26,55 @@
   &.--left {
     & .productTooltip__info {
       left: unset;
-      right: calc(100% + 10px);
+      right: 50%;
       transform: translate(-40px, -50%);
       @media (max-width: 1919px) {
-        right: calc(100% - 17px);
+        right: calc(100% + 10px);
+        transform: translate(-40px, 0);
+      }
+    }
+  }
+  &.--left-advanced {
+    & .productTooltip__info {
+      left: unset;
+      right: 50%;
+      transform: translate(-40px, -35%);
+      @media (max-width: 1919px) {
+        right: calc(100% + 10px);
         transform: translate(-40px, 0);
       }
     }
   }
   &.--right {
     & .productTooltip__info {
-      left: calc(100% + 10px);
+      left: 50%;
       right: unset;
       transform: translate(40px, -50%);
       @media (max-width: 1919px) {
-        left: calc(100% - 17px);
+        left: calc(100% + 10px);
         transform: translate(40px, 0);
+      }
+    }
+  }
+
+  &.--right-advanced {
+    & .productTooltip__info {
+      left: 50%;
+      right: unset;
+      transform: translate(40px, -50%);
+      @media (max-width: 1919px) {
+        left: calc(100% + 10px);
+        transform: translate(40px, 0);
+      }
+    }
+  }
+  &.--center {
+    & .productTooltip__info {
+      left: 50%;
+      right: unset;
+      transform: translate(-50%, 40px);
+      @media (max-width: 1919px) {
+        transform: translate(-50%, 0);
       }
     }
   }

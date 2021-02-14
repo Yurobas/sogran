@@ -13,36 +13,37 @@ export function productTooltipInit() {
     item
       .querySelector('.productTooltip__icon')
       .addEventListener('click', event => {
-        const node = event.currentTarget as HTMLElement
-
         const block = item.querySelector('.productTooltip__info') as HTMLElement
+
         if (!item.classList.contains('--active')) {
           Object.assign(block.style, {
             opacity: 0,
             transition: 'none',
           })
           item.classList.add('--active')
-  
-          const {
-            right,
-            left,
-            width,
-          } = block.getBoundingClientRect()
 
-          const {
-            documentElement: {
-              clientWidth
+          const priority = ['--right', '--right-advanced', '--left', '--left-advanced', '--center']
+          let oldClassName = ''
+          for (let i = 0; i < priority.length; i++) {
+            const className = priority[i];
+            
+            const {
+              right,
+              left,
+              width,
+            } = block.getBoundingClientRect()
+
+            const {
+              documentElement: {
+                clientWidth
+              }
+            } = document
+            if (clientWidth - right < 30 || left < 30) {
+              oldClassName && item.classList.remove(oldClassName)
+              item.classList.add(className)
+              oldClassName = className
             }
-          } = document
-          
-          if (clientWidth - right < 30) {
-            item.classList.remove('--right')
-            item.classList.add('--left')
-          } else if (left < 30) {
-            item.classList.add('--right')
-            item.classList.remove('--left')
           }
-
           item.classList.remove('--active')
         }
         
