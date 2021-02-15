@@ -401,6 +401,7 @@ var wrapper = document.querySelector('.wrapper');
 
 function initHeader() {
   wrapper.addEventListener('scroll', function (event) {
+    console.log(event);
     var scrollTop = wrapper.scrollTop;
 
     if (scrollTop > height) {
@@ -13057,13 +13058,6 @@ function () {
   Form.prototype.listeners = function () {
     var _this = this;
 
-    fetch('http://u1273386.isp.regruhosting.ru/api/session-id.php', {
-      method: 'GET',
-      mode: "no-cors"
-    }).then(function (response) {
-      return console.log(response);
-    });
-
     var fnFiles = function (event) {
       _this.testFile();
     };
@@ -13356,7 +13350,6 @@ function productTooltipInit() {
       item.classList.remove('--active');
     });
     item.querySelector('.productTooltip__icon').addEventListener('click', function (event) {
-      var node = event.currentTarget;
       var block = item.querySelector('.productTooltip__info');
 
       if (!item.classList.contains('--active')) {
@@ -13365,20 +13358,24 @@ function productTooltipInit() {
           transition: 'none'
         });
         item.classList.add('--active');
+        var priority = ['--right', '--right-advanced', '--left', '--left-advanced', '--center'];
+        var oldClassName = '';
 
-        var _a = block.getBoundingClientRect(),
-            right = _a.right,
-            left = _a.left,
-            width = _a.width;
+        for (var i = 0; i < priority.length; i++) {
+          var className = priority[i];
 
-        var clientWidth = document.documentElement.clientWidth;
+          var _a = block.getBoundingClientRect(),
+              right = _a.right,
+              left = _a.left,
+              width = _a.width;
 
-        if (clientWidth - right < 30) {
-          item.classList.remove('--right');
-          item.classList.add('--left');
-        } else if (left < 30) {
-          item.classList.add('--right');
-          item.classList.remove('--left');
+          var clientWidth = document.documentElement.clientWidth;
+
+          if (clientWidth - right < 30 || left < 30) {
+            oldClassName && item.classList.remove(oldClassName);
+            item.classList.add(className);
+            oldClassName = className;
+          }
         }
 
         item.classList.remove('--active');
@@ -13463,7 +13460,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57874" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50778" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
