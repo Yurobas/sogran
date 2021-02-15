@@ -401,7 +401,6 @@ var wrapper = document.querySelector('.wrapper');
 
 function initHeader() {
   wrapper.addEventListener('scroll', function (event) {
-    console.log(event);
     var scrollTop = wrapper.scrollTop;
 
     if (scrollTop > height) {
@@ -13058,6 +13057,13 @@ function () {
   Form.prototype.listeners = function () {
     var _this = this;
 
+    fetch('http://u1273386.isp.regruhosting.ru/api/session-id.php', {
+      method: 'GET',
+      mode: "no-cors"
+    }).then(function (response) {
+      return console.log(response);
+    });
+
     var fnFiles = function (event) {
       _this.testFile();
     };
@@ -13460,7 +13466,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50778" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63340" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
