@@ -12421,6 +12421,14 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+var __spreadArrays = this && this.__spreadArrays || function () {
+  for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+
+  for (var r = Array(s), k = 0, i = 0; i < il; i++) for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) r[k] = a[j];
+
+  return r;
+};
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -12436,28 +12444,51 @@ exports.default = function (className) {
     className = '.slider__swiper';
   }
 
+  var info = document.querySelector('.slider__list');
+
+  var infos = __spreadArrays(document.querySelectorAll('.slider__info'));
+
   var slider = new swiper_1.default(className, {
+    speed: 700,
     loop: true,
     navigation: {
       nextEl: '.slider__arrow.--right',
       prevEl: '.slider__arrow.--left'
+    },
+    on: {
+      init: function () {
+        var current = this.realIndex;
+        activeInfo(current);
+      }
     }
   });
-  slider.on('slideChangeTransitionStart', function () {
-    var _a, _b;
-
-    (_a = slider.el.closest('.portfolio')) === null || _a === void 0 ? void 0 : _a.classList.add('--remove');
-    (_b = slider.el.closest('.portfolio')) === null || _b === void 0 ? void 0 : _b.classList.remove('--add');
-    setTimeout(function () {
-      slider.el.closest('.portfolio').dataset.index = slider.activeIndex.toString();
-      setTimeout(function () {
-        var _a, _b;
-
-        (_a = slider.el.closest('.portfolio')) === null || _a === void 0 ? void 0 : _a.classList.add('--add');
-        (_b = slider.el.closest('.portfolio')) === null || _b === void 0 ? void 0 : _b.classList.remove('--remove');
-      });
-    }, 500);
+  slider.on('slideChange', function () {
+    var current = slider.realIndex;
+    activeInfo(current);
   });
+
+  function activeInfo(current) {
+    infos.forEach(function (item, index) {
+      item.classList.remove('--active');
+
+      if (index === current) {
+        var height = item.getBoundingClientRect().height;
+        info.style.height = height + 'px';
+        item.classList.add('--active');
+      }
+    });
+  } //  slider.on('slideChangeTransitionStart', () => {
+  //   slider.el.closest('.portfolio')?.classList.add('--remove')
+  //   slider.el.closest('.portfolio')?.classList.remove('--add')
+  //   setTimeout(() => {
+  //     slider.el.closest<HTMLElement>('.portfolio').dataset.index = slider.activeIndex.toString()
+  //     setTimeout(() => {
+  //       slider.el.closest('.portfolio')?.classList.add('--add')
+  //       slider.el.closest('.portfolio')?.classList.remove('--remove')
+  //     });
+  //   }, 500);
+  //  })
+
 };
 },{"swiper":"../node_modules/swiper/swiper.esm.js","swiper/swiper-bundle.css":"../node_modules/swiper/swiper-bundle.css"}],"js/animateBlocks.ts":[function(require,module,exports) {
 "use strict";
@@ -13466,7 +13497,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63340" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51444" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
