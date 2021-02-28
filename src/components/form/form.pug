@@ -2,38 +2,47 @@ form(action="http://u1273386.isp.regruhosting.ru/api/request.php" method="POST" 
   input(type="hidden" name="sessid" value="")
   input(type="hidden" name="WEB_FORM_ID" value="1")
   input(type="hidden" name="web_form_submit" value="Y")
-  .form__row
-    .form__block
-      label.form__label
-        input(class="form__input text" name="form_text_12" placeholder=" " type="text")
-        .form__placeholder 
-          span.form__placeholder-text.text Имя
-        .form__info Ошибка
-    .form__block
-      label.form__label
-        input(class="form__input text" name="form_text_13" placeholder=" " type="text" inputmode="tel" value="")
-        .form__placeholder 
-          span.form__placeholder-text.text Телефон
-        .form__info Ошибка
-    .form__block
-      label.form__label
-        input(class="form__input text" name="form_email_14" placeholder=" " inputmode="email" type="text")
-        .form__placeholder 
-          span.form__placeholder-text.text Email
-        .form__info Ошибка
-    .form__block
-      label.form__label.--file
-        input(class="form__input text" name="form_file_15" accept=".doc,.docx,.zip,.7zip,.txt,image/jpg,image/jpeg,image/png" type="file")
-        .form__placeholder 
-          span.form__placeholder-text.text Прикрепить файл
-          span(class="form__placeholder-clear" title="Удалить файл")
-        img(class="form__icon" src="/images/icons/file.svg")
-        .form__info Допустимые форматы jpg, pdf, xls. Файл не должен превышать 10MB.
-    .form__block.--wide
-      label.form__label
-        input(class="form__input text" name="form_text_16" placeholder=" " type="text")
-        .form__placeholder 
-          span.form__placeholder-text.text Ваш вопрос
-        .form__info Ошибка
-  .form__footer
-    input(class="button" name="web_form_submit" type="submit" value="Оставить заявку")
+  .form__container
+    .form__success
+      .form__success-container
+        .form__success-icon
+          span.form__success-icon-tip
+          span.form__success-icon-long
+        .form__success-info
+          .form__success-title.title.title--block Заявка отправлена
+          p.form__success-text.text Менеджер свяжется в течение 5 минут
+    .form__row
+      .form__block
+        label.form__label
+          input(class="form__input text" name="form_text_12" placeholder=" " type="text")
+          .form__placeholder 
+            span.form__placeholder-text.text Имя
+          .form__info Ошибка
+      .form__block
+        label.form__label
+          input(class="form__input text" name="form_text_13" placeholder=" " type="text" inputmode="tel" value="")
+          .form__placeholder 
+            span.form__placeholder-text.text Телефон
+          .form__info Ошибка
+      .form__block
+        label.form__label
+          input(class="form__input text" name="form_email_14" placeholder=" " inputmode="email" type="text")
+          .form__placeholder 
+            span.form__placeholder-text.text Email
+          .form__info Ошибка
+      .form__block
+        label.form__label.--file
+          input(class="form__input text" name="form_file_15" accept=".doc,.docx,.zip,.7zip,.txt,image/jpg,image/jpeg,image/png" type="file")
+          .form__placeholder 
+            span.form__placeholder-text.text Прикрепить файл
+            span(class="form__placeholder-clear" title="Удалить файл")
+          img(class="form__icon" src="/images/icons/file.svg")
+          .form__info Допустимые форматы jpg, pdf, xls. Файл не должен превышать 10MB.
+      .form__block.--wide
+        label.form__label
+          input(class="form__input text" name="form_text_16" placeholder=" " type="text")
+          .form__placeholder 
+            span.form__placeholder-text.text Ваш вопрос
+          .form__info Ошибка
+    .form__footer
+      input(class="button" name="web_form_submit" type="submit" value="Оставить заявку")

@@ -15219,6 +15219,85 @@ label {
   }
 }
 
+.form.--success .form__success {
+  opacity: 1;
+  pointer-events: unset;
+}
+.form.--success .form__success-icon-tip {
+  animation: tipInPlace 300ms ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: 430ms;
+  visibility: hidden;
+}
+.form.--success .form__success-icon-long {
+  animation: longInPlace 140ms ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: 670ms;
+  visibility: hidden;
+}
+.form.--success .form____row, .form.--success .form__footer {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.form__container {
+  position: relative;
+}
+.form__success {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background-color: #fff;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.form__success-container {
+  display: flex;
+  align-items: center;
+}
+.form__success-icon {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  font-size: 8.5px;
+  margin-right: 25px;
+  border-radius: 50%;
+  border: 2px solid #E00C0C;
+  background-color: #fff;
+  transform-origin: center;
+  transform: scale(1);
+}
+.form__success-icon-tip, .form__success-icon-long {
+  position: absolute;
+  height: 2px;
+  background-color: #E00C0C;
+}
+.form__success-icon-tip {
+  top: 5.3em;
+  left: 2.6em;
+  width: 2.4em;
+  transform: rotate(45deg);
+}
+.form__success-icon-long {
+  top: 4.7em;
+  left: 4em;
+  width: 4em;
+  transform: rotate(-45deg);
+}
+.form__success-title {
+  margin-bottom: 10px;
+}
+.form__success-text {
+  margin: 0;
+}
+.form__row, .form__footer {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
 .form__row {
   display: flex;
   flex-wrap: wrap;
@@ -15391,6 +15470,32 @@ label {
   margin-top: 35px;
 }
 
+@keyframes tipInPlace {
+  from {
+    top: 0em;
+    left: -1.6em;
+    width: 0em;
+  }
+  to {
+    top: 5.3em;
+    left: 2.6em;
+    width: 2.4em;
+    visibility: visible;
+  }
+}
+@keyframes longInPlace {
+  from {
+    top: 6.1em;
+    left: 4.45em;
+    width: 0em;
+  }
+  to {
+    top: 4.7em;
+    left: 4em;
+    width: 4em;
+    visibility: visible;
+  }
+}
 .close {
   position: absolute;
   top: 30px;

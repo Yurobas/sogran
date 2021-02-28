@@ -18,4 +18,10 @@ preloader()
 
         document.querySelectorAll('form').forEach(item => new From(item))
         map()
+
+        fetch('http://u1273386.isp.regruhosting.ru/api/session-id.php', {
+            method: 'GET',
+            mode: "no-cors",
+        })
+        .then(response => console.log(response))
     })

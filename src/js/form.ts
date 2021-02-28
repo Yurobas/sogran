@@ -7,6 +7,7 @@ export default class Form {
   remove: HTMLElement
   emailBlock: HTMLElement
   email: HTMLInputElement
+  sessionID: HTMLInputElement
 
   phone: HTMLInputElement
   phoneBlock: HTMLElement
@@ -21,6 +22,7 @@ export default class Form {
     this.inputFileBlock = this.inputFile.closest('.form__label')
     this.remove = this.inputFileBlock.querySelector('.form__placeholder-clear')
 
+    this.sessionID = form.querySelector('input[name="sessid"]')
 
     this.emailBlock = form.querySelector('[inputmode="email"]').closest('.form__label')
     this.email = this.emailBlock.querySelector('input')
@@ -34,11 +36,15 @@ export default class Form {
 
   listeners(){
 
-    fetch('http://u1273386.isp.regruhosting.ru/api/session-id.php', {
-      method: 'GET',
-      mode: "no-cors",
-    })
-      .then(response => console.log(response))
+    const sessionID = getCookie('PHPSESSID')
+    this.sessionID.value = sessionID
+
+    function getCookie(name) {
+      let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
 
     const fnFiles = (event: Event) => {
       this.testFile()
@@ -110,6 +116,7 @@ export default class Form {
         body: new FormData(this.el)
       })
         .then(() => {
+          setHeight()
           this.el.classList.add('--success')
           this.el.classList.remove('--blocked')
           this.el.reset()
@@ -121,8 +128,23 @@ export default class Form {
     })
 
     document.querySelector('#callback').addEventListener('change', (event) => {
-      [...document.querySelectorAll('.modal form')].forEach(item => item.classList.remove('--success'))
+      [...document.querySelectorAll('.modal form')].forEach(item => {
+        item.classList.remove('--success')
+        removeHeight()
+      })
     })
+  }
+
+  setHeight() {
+    const container = this.el.querySelector('.form__container')
+    const success = this.el.querySelector('.form__success-container')
+    const height = success.getBoundingClientRect().height
+    container.style.height = height + 'px'
+  }
+
+  removeHeight() {
+    const container = this.el.querySelector('.form__container')
+    container.style.height = 'auto'
   }
 
   testFile(){

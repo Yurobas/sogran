@@ -1,4 +1,90 @@
 .form {
+  &.--success {
+    & .form__success {
+      opacity: 1;
+      pointer-events: unset;
+      &-icon {
+        &-tip {
+          animation: tipInPlace 300ms ease-in-out;
+          animation-fill-mode: forwards;
+          animation-delay: 430ms;
+          visibility: hidden;
+        }
+        &-long {
+          animation: longInPlace 140ms ease-in-out;
+          animation-fill-mode: forwards;
+          animation-delay: 530ms + 140ms;
+          visibility: hidden;
+        }
+      }
+    }
+    & .form__row,
+    & .form__footer {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
+  &__container {
+    position: relative;
+  }
+  &__success {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    background-color: $white;
+    transition: opacity $transition;
+    pointer-events: none;
+    z-index: 2;
+    &-container {
+      display: flex;
+      align-items: center;
+    }
+    &-icon {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      font-size: 8.5px;
+      margin-right: 25px;
+      border-radius: 50%;
+      border: 2px solid $red;
+      background-color: $white;
+      transform-origin: center;
+      transform: scale(1);
+      &-tip,
+      &-long {
+        position: absolute;
+        height: 2px;
+        background-color: $red;
+      }
+      &-tip {
+        top: 5.3em;
+        left: 2.6em;
+        width: 2.4em;
+        transform: rotate(45deg);
+      }
+      &-long {
+        top: 4.7em;
+        left: 4em;
+        width: 4em;
+        transform: rotate(-45deg);
+      }
+    }
+    &-title {
+      margin-bottom: 10px;
+    }
+    &-text {
+      margin: 0;
+    }
+  }
+  &__row,
+  &__footer {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity $transition, transform $transition;
+  }
   &__row {
     display: flex;
     flex-wrap: wrap;
@@ -160,5 +246,33 @@
     &__footer {
       margin-top: 35px;
     }
+  }
+}
+
+@keyframes tipInPlace {
+  from {
+    top: 0em;
+    left: -1.6em;
+    width: 0em;
+  }
+  to {
+    top: 5.3em;
+    left: 2.6em;
+    width: 2.4em;
+    visibility: visible;
+  }
+}
+
+@keyframes longInPlace {
+  from {
+    top: 6.1em;
+    left: 4.45em;
+    width: 0em;
+  }
+  to {
+    top: 4.7em;
+    left: 4em;
+    width: 4em;
+    visibility: visible;
   }
 }

@@ -13078,6 +13078,7 @@ function () {
     this.inputFile = form.querySelector('input[type="file"]');
     this.inputFileBlock = this.inputFile.closest('.form__label');
     this.remove = this.inputFileBlock.querySelector('.form__placeholder-clear');
+    this.sessionID = form.querySelector('input[name="sessid"]');
     this.emailBlock = form.querySelector('[inputmode="email"]').closest('.form__label');
     this.email = this.emailBlock.querySelector('input');
     this.phone = form.querySelector('[inputmode="tel"]');
@@ -13088,12 +13089,13 @@ function () {
   Form.prototype.listeners = function () {
     var _this = this;
 
-    fetch('http://u1273386.isp.regruhosting.ru/api/session-id.php', {
-      method: 'GET',
-      mode: "no-cors"
-    }).then(function (response) {
-      return console.log(response);
-    });
+    var sessionID = getCookie('PHPSESSID');
+    this.sessionID.value = sessionID;
+
+    function getCookie(name) {
+      var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
 
     var fnFiles = function (event) {
       _this.testFile();
@@ -13169,6 +13171,8 @@ function () {
         method: _this.el.method || 'POST',
         body: new FormData(_this.el)
       }).then(function () {
+        setHeight();
+
         _this.el.classList.add('--success');
 
         _this.el.classList.remove('--blocked');
@@ -13182,9 +13186,22 @@ function () {
     });
     document.querySelector('#callback').addEventListener('change', function (event) {
       __spreadArrays(document.querySelectorAll('.modal form')).forEach(function (item) {
-        return item.classList.remove('--success');
+        item.classList.remove('--success');
+        removeHeight();
       });
     });
+  };
+
+  Form.prototype.setHeight = function () {
+    var container = this.el.querySelector('.form__container');
+    var success = this.el.querySelector('.form__success-container');
+    var height = success.getBoundingClientRect().height;
+    container.style.height = height + 'px';
+  };
+
+  Form.prototype.removeHeight = function () {
+    var container = this.el.querySelector('.form__container');
+    container.style.height = 'auto';
   };
 
   Form.prototype.testFile = function () {
@@ -13468,6 +13485,12 @@ preloader_1.default().then(function () {
     return new form_1.default(item);
   });
   map_js_1.map();
+  fetch('http://u1273386.isp.regruhosting.ru/api/session-id.php', {
+    method: 'GET',
+    mode: "no-cors"
+  }).then(function (response) {
+    return console.log(response);
+  });
 });
 },{"./js/preloader":"js/preloader.ts","./js/header":"js/header.ts","./js/slider":"js/slider.ts","./js/animateBlocks":"js/animateBlocks.ts","./js/map.js":"js/map.js","./js/form":"js/form.ts","./js/pop":"js/pop.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -13497,7 +13520,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51444" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57227" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
